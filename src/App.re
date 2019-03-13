@@ -1,6 +1,8 @@
+/* Should be a entry for News List */
 open BsReactNative;
 
 let component = ReasonReact.statelessComponent("App");
+let onPress = () => Alert.alert(~title="alert", ~message="yoyo", ());
 
 let make = _children => {
   ...component,
@@ -16,6 +18,7 @@ let make = _children => {
           {ReasonReact.string("To get started, edit App.re!")}
         </Text>
       </ReasonExpo.LinearGradient>
+      <Button title="Go to list" onPress />
     </View>,
 };
 

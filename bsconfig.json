@@ -3,8 +3,16 @@
   "reason": {
     "react-jsx": 2
   },
-  "bsc-flags": ["-bs-super-errors"],
-  "bs-dependencies": ["bs-react-native", "reason-react", "reason-expo"],
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
+  "bs-dependencies": [
+    "bs-react-native",
+    "reason-react",
+    "reason-expo",
+    "@glennsl/bs-json",
+    "bs-fetch"
+  ],
   "sources": [
     {
       "dir": "src"

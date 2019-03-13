@@ -6,10 +6,16 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
+var Alert$BsReactNative = require("bs-react-native/src/alert.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
+var Button$BsReactNative = require("bs-react-native/src/components/button.js");
 var LinearGradient$ReasonExpo = require("reason-expo/src/LinearGradient.bs.js");
 
 var component = ReasonReact.statelessComponent("App");
+
+function onPress(param) {
+  return Alert$BsReactNative.alert("alert", "yoyo", undefined, undefined, undefined, /* () */0);
+}
 
 function make(_children) {
   return /* record */[
@@ -32,7 +38,8 @@ function make(_children) {
                                             /* [] */0
                                           ]
                                         ]
-                                      ])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, LinearGradient$ReasonExpo.make(/* array */[
+                                      ])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                              ReasonReact.element(undefined, undefined, LinearGradient$ReasonExpo.make(/* array */[
                                         "#DD4B39",
                                         "#C62C19"
                                       ], undefined, undefined, undefined, Js_primitive.some(Style$BsReactNative.style(/* :: */[
@@ -44,7 +51,9 @@ function make(_children) {
                                               ])), /* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(Style$BsReactNative.style(/* :: */[
                                                           Style$BsReactNative.color(/* String */Block.__(0, ["white"])),
                                                           /* [] */0
-                                                        ])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["To get started, edit App.re!"]))]))]));
+                                                        ])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["To get started, edit App.re!"]))])),
+                              ReasonReact.element(undefined, undefined, Button$BsReactNative.make(undefined, undefined, undefined, onPress, undefined, "Go to list")(/* array */[]))
+                            ]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
@@ -58,6 +67,7 @@ var $$default = ReasonReact.wrapReasonForJs(component, (function (_jsProps) {
       }));
 
 exports.component = component;
+exports.onPress = onPress;
 exports.make = make;
 exports.$$default = $$default;
 exports.default = $$default;
