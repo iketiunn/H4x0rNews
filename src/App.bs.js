@@ -3,44 +3,15 @@
 
 var Data = require("./Data.bs.js");
 var List = require("bs-platform/lib/js/list.js");
-var Expo = require("expo");
 var $$Array = require("bs-platform/lib/js/array.js");
 var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
+var AppStyle = require("./AppStyle.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
-var Text$BsReactNative = require("bs-react-native/src/components/text.js");
+var NewsFlatList = require("./NewsFlatList.bs.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
-var Style$BsReactNative = require("bs-react-native/src/style.js");
-var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
-var Platform$BsReactNative = require("bs-react-native/src/platform.js");
 var SafeAreaView$BsReactNative = require("bs-react-native/src/components/safeAreaView.js");
-
-var match = Platform$BsReactNative.os(/* () */0) === /* Android */0;
-
-var pageContainer = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(1.0),
-      /* :: */[
-        Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#FF6600"])),
-        /* :: */[
-          Style$BsReactNative.paddingTop(/* Pt */Block.__(0, [match ? Expo.Constants.statusBarHeight : 0.0])),
-          /* [] */0
-        ]
-      ]
-    ]);
-
-var news = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(1.0),
-      /* :: */[
-        Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"])),
-        /* [] */0
-      ]
-    ]);
-
-var AppStyle = /* module */[
-  /* pageContainer */pageContainer,
-  /* news */news
-];
 
 var component = ReasonReact.reducerComponent("App");
 
@@ -65,18 +36,6 @@ function make(_children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (self) {
-              var renderItem = function (param) {
-                return FlatList$BsReactNative.renderItem((function (news) {
-                              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[news[/* item */0][/* title */1]])),
-                                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[]))
-                                            ]));
-                            }), param);
-              };
-              var keyExtractor = function (item, _index) {
-                return String(item[/* id */0]);
-              };
-              var data = $$Array.of_list(self[/* state */1][/* newsList */0]);
               return ReasonReact.element(undefined, undefined, Curry.app(SafeAreaView$BsReactNative.make, [
                               undefined,
                               undefined,
@@ -87,7 +46,7 @@ function make(_children) {
                               undefined,
                               undefined,
                               undefined,
-                              Js_primitive.some(pageContainer),
+                              Js_primitive.some(AppStyle.pageContainer),
                               undefined,
                               undefined,
                               undefined,
@@ -98,7 +57,7 @@ function make(_children) {
                               undefined,
                               undefined,
                               undefined,
-                              /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make(data, renderItem, keyExtractor, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]))]
+                              /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), /* array */[]))]))]
                             ]));
             }),
           /* initialState */(function (param) {
@@ -133,10 +92,9 @@ var $$default = ReasonReact.wrapReasonForJs(component, (function (_jsProps) {
         return make(/* array */[]);
       }));
 
-exports.AppStyle = AppStyle;
 exports.component = component;
 exports.make = make;
 exports.$$default = $$default;
 exports.default = $$default;
 exports.__esModule = true;
-/* pageContainer Not a pure module */
+/* component Not a pure module */

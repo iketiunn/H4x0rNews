@@ -1,22 +1,6 @@
 /* Should be a entry for News List */
 open BsReactNative;
 
-module AppStyle = {
-  open Style;
-
-  let pageContainer =
-    style([
-      flex(1.0),
-      backgroundColor(String("#FF6600")),
-      paddingTop(
-        Pt(
-          Platform.os() == Platform.Android ?
-            float_of_int(ReasonExpo.Constants.statusBarHeight) : 0.0,
-        ),
-      ),
-    ]);
-  let news = style([flex(1.0), backgroundColor(String("#F6F6EF"))]);
-};
 type state = {
   newsList: Data.newsList,
   page: int,
@@ -54,22 +38,7 @@ let make = _children => {
      */
     <SafeAreaView style=AppStyle.pageContainer>
       <View style=AppStyle.news>
-        {
-          /* Need to specified type! */
-          let renderItem =
-            /* Make a card view */
-            FlatList.renderItem((news: FlatList.renderBag(Data.news)) =>
-              <View>
-                <Text> {ReasonReact.string(news.item.title)} </Text>
-                <Text />
-              </View>
-            );
-          /* Need to specified type! */
-          let keyExtractor = (item: Data.news, _index) =>
-            string_of_int(item.id);
-          let data = Array.of_list(self.state.newsList);
-          <FlatList data keyExtractor renderItem />;
-        }
+        <NewsFlatList data={Array.of_list(self.state.newsList)} />
       </View>
     </SafeAreaView>,
 };
