@@ -3,3 +3,4 @@
   - Practice react native & expo
   - Compare with pwa by light usage app
 - Using api: https://github.com/cheeaun/node-hnapi
+  - powered by now: https://ikewat-hnapi.now.sh

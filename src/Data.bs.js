@@ -76,9 +76,11 @@ var Decode = /* module */[
   /* story */story
 ];
 
+var domain = "https://ikewat-hnapi.now.sh";
+
 function fetchNewList($staropt$star, param) {
   var id = $staropt$star !== undefined ? $staropt$star : "1";
-  return fetch("https://node-hnapi.herokuapp.com/news?page=" + id).then((function (prim) {
+  return fetch(domain + ("/news?page=" + id)).then((function (prim) {
                   return prim.json();
                 })).then((function (json) {
                 return Promise.resolve(Json_decode.list(news, json));
@@ -86,7 +88,7 @@ function fetchNewList($staropt$star, param) {
 }
 
 function fetchStory(id) {
-  return fetch("http://node-hnapi.herokuapp.com/item/" + id).then((function (prim) {
+  return fetch(domain + ("/item/" + id)).then((function (prim) {
                   return prim.json();
                 })).then((function (json) {
                 return Promise.resolve(story(json));
@@ -94,6 +96,7 @@ function fetchStory(id) {
 }
 
 exports.Decode = Decode;
+exports.domain = domain;
 exports.fetchNewList = fetchNewList;
 exports.fetchStory = fetchStory;
 /* No side effect */

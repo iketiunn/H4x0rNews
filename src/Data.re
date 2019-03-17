@@ -73,15 +73,16 @@ module Decode = {
       comments: json |> field("comments", list(comment)),
     };
 };
+let domain = "https://ikewat-hnapi.now.sh";
 let fetchNewList = (~id="1", ()) =>
   Js.Promise.(
-    Fetch.fetch("https://node-hnapi.herokuapp.com/news?page=" ++ id)
+    Fetch.fetch(domain ++ "/news?page=" ++ id)
     |> then_(Fetch.Response.json)
     |> then_(json => json |> Decode.newsList |> resolve)
   );
 let fetchStory = id =>
   Js.Promise.(
-    Fetch.fetch("http://node-hnapi.herokuapp.com/item/" ++ id)
+    Fetch.fetch(domain ++ "/item/" ++ id)
     |> then_(Fetch.Response.json)
     |> then_(json => json |> Decode.story |> resolve)
   );
