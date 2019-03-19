@@ -2,7 +2,7 @@ open BsReactNative;
 
 let handleLink = url => ReasonExpo.WebBrowser.openBrowserAsync(url);
 let component = ReasonReact.statelessComponent("NewsFlatList");
-let make = (~data, _children) => {
+let make = (~data, ~onEndReached, _children) => {
   ...component,
   render: _self => {
     /* Need to specified type! */
@@ -34,6 +34,14 @@ let make = (~data, _children) => {
         /* Events */
         let openUrl = () =>
           ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
+        /*
+          React Native Linking opening new borwser outside the app,
+          Expo handle it better, when close the opened url it's more smooth.
+
+          let openUrl = () => Linking.openURL(news.item.url) |> ignore;
+         */
+
+        /* TODO: handle route to comments */
 
         <View style=AppStyle.listItemContainer>
           <View style=AppStyle.listIndex>
@@ -51,9 +59,16 @@ let make = (~data, _children) => {
         </View>;
       });
     /* Need to specified type! */
-    let keyExtractor = (item: Data.news, _index) => string_of_int(item.id);
+    let keyExtractor = (_item: Data.news, index) => string_of_int(index);
     let itemSeparatorComponent =
       FlatList.separatorComponent(_ => <View style=AppStyle.separator />);
-    <FlatList data keyExtractor renderItem itemSeparatorComponent />;
+    <FlatList
+      data
+      keyExtractor
+      renderItem
+      itemSeparatorComponent
+      onEndReached
+      onEndReachedThreshold=0.5
+    />;
   },
 };

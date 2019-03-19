@@ -1,6 +1,7 @@
 open BsReactNative;
 open Style;
 
+let activityIndicator = style([backgroundColor(String("#F6F6EF"))]);
 /*
  * Using it to handle notch
  */

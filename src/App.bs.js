@@ -12,25 +12,33 @@ var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var NewsFlatList = require("./NewsFlatList.bs.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var SafeAreaView$BsReactNative = require("bs-react-native/src/components/safeAreaView.js");
+var ActivityIndicator$BsReactNative = require("bs-react-native/src/components/activityIndicator.js");
 
 var component = ReasonReact.reducerComponent("App");
 
 function make(_children) {
+  var loadNews = function (param) {
+    var state = param[/* state */1];
+    if (state[/* page */1] < 10 && !state[/* isLoading */2]) {
+      var send = param[/* send */3];
+      var newPage = state[/* page */1] + 1 | 0;
+      Data.fetchNewList(String(newPage), /* () */0).then((function (newsList) {
+              return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
+                                newPage,
+                                newsList
+                              ]]));
+            }));
+      return Curry._1(send, /* Loading */0);
+    } else {
+      return 0;
+    }
+  };
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
           /* handedOffState */component[/* handedOffState */2],
           /* willReceiveProps */component[/* willReceiveProps */3],
-          /* didMount */(function (self) {
-              var newPage = self[/* state */1][/* page */1] + 1 | 0;
-              Data.fetchNewList(String(newPage), /* () */0).then((function (newsList) {
-                      return Promise.resolve(Curry._1(self[/* send */3], /* Loaded */[/* tuple */[
-                                        newPage,
-                                        newsList
-                                      ]]));
-                    }));
-              return /* () */0;
-            }),
+          /* didMount */loadNews,
           /* didUpdate */component[/* didUpdate */5],
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
@@ -57,14 +65,19 @@ function make(_children) {
                               undefined,
                               undefined,
                               undefined,
-                              /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), /* array */[]))]))]
+                              /* array */[
+                                ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), (function (param) {
+                                                      return loadNews(self);
+                                                    }), /* array */[]))])),
+                                ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[self[/* state */1][/* isLoading */2] ? ReasonReact.element(undefined, undefined, ActivityIndicator$BsReactNative.make(undefined, undefined, /* large */-272944197, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.activityIndicator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]))
+                              ]
                             ]));
             }),
           /* initialState */(function (param) {
               return /* record */[
                       /* newsList : [] */0,
                       /* page */0,
-                      /* loading */false
+                      /* isLoading */false
                     ];
             }),
           /* retainedProps */component[/* retainedProps */11],
@@ -73,14 +86,14 @@ function make(_children) {
                 var match = action[0];
                 return /* Update */Block.__(0, [/* record */[
                             /* newsList */List.append(state[/* newsList */0], match[1]),
-                            /* page */state[/* page */1] + match[0] | 0,
-                            /* loading */state[/* loading */2]
+                            /* page */match[0],
+                            /* isLoading */false
                           ]]);
               } else {
                 return /* Update */Block.__(0, [/* record */[
                             /* newsList */state[/* newsList */0],
                             /* page */state[/* page */1],
-                            /* loading */true
+                            /* isLoading */true
                           ]]);
               }
             }),

@@ -13,7 +13,7 @@ var handleLink = WebBrowser$ReasonExpo.openBrowserAsync;
 
 var component = ReasonReact.statelessComponent("NewsFlatList");
 
-function make(data, _children) {
+function make(data, onEndReached, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -57,15 +57,15 @@ function make(data, _children) {
                                             ]));
                             }), param);
               };
-              var keyExtractor = function (item, _index) {
-                return String(item[/* id */0]);
+              var keyExtractor = function (_item, index) {
+                return String(index);
               };
               var itemSeparatorComponent = function (param) {
                 return FlatList$BsReactNative.separatorComponent((function (param) {
                               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.separator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
                             }), param);
               };
-              return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make(data, renderItem, keyExtractor, Js_primitive.some(itemSeparatorComponent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
+              return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make(data, renderItem, keyExtractor, Js_primitive.some(itemSeparatorComponent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, onEndReached, 0.5, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

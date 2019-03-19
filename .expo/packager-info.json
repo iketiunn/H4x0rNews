@@ -3,8 +3,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://pc-avn.anonymous.h4x0rnews.exp.direct",
   "packagerNgrokUrl": "https://packager.pc-avn.anonymous.h4x0rnews.exp.direct",
-  "ngrokPid": 65174,
+  "ngrokPid": 2450,
   "packagerPort": 19001,
-  "packagerPid": 65035,
+  "packagerPid": 2365,
   "webpackServerPort": null
 }

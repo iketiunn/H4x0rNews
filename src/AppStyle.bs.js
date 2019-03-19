@@ -6,6 +6,11 @@ var Block = require("bs-platform/lib/js/block.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
 var Platform$BsReactNative = require("bs-react-native/src/platform.js");
 
+var activityIndicator = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"])),
+      /* [] */0
+    ]);
+
 var match = Platform$BsReactNative.os(/* () */0) === /* Android */0;
 
 var pageContainer = Style$BsReactNative.style(/* :: */[
@@ -91,6 +96,7 @@ var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
+exports.activityIndicator = activityIndicator;
 exports.pageContainer = pageContainer;
 exports.news = news;
 exports.separator = separator;
@@ -101,4 +107,4 @@ exports.title = title;
 exports.domain = domain;
 exports.timeAgoAndUser = timeAgoAndUser;
 exports.listCommentAndFunc = listCommentAndFunc;
-/* pageContainer Not a pure module */
+/* activityIndicator Not a pure module */
