@@ -23,3 +23,12 @@ let separator =
     marginTop(Pt(5.0)),
     marginBottom(Pt(5.0)),
   ]);
+
+let listItemContainer =
+  style([flex(1.0), flexWrap(Nowrap), flexDirection(Row)]);
+let listIndex = style([flex(0.1), alignSelf(Center)]);
+let listContent = style([flex(0.8)]);
+let title = style([fontWeight(`Bold)]);
+let domain = style([fontStyle(Italic), color(String("#727270"))]);
+let timeAgoAndUser = style([color(String("#727270"))]);
+let listCommentAndFunc = style([flex(0.1), alignSelf(FlexStart)]);

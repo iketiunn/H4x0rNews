@@ -41,7 +41,64 @@ var separator = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
+var listItemContainer = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.flex(1.0),
+      /* :: */[
+        Style$BsReactNative.flexWrap(/* Nowrap */1),
+        /* :: */[
+          Style$BsReactNative.flexDirection(/* Row */0),
+          /* [] */0
+        ]
+      ]
+    ]);
+
+var listIndex = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.flex(0.1),
+      /* :: */[
+        Style$BsReactNative.alignSelf(/* Center */2),
+        /* [] */0
+      ]
+    ]);
+
+var listContent = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.flex(0.8),
+      /* [] */0
+    ]);
+
+var title = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.fontWeight(/* Bold */737455525),
+      /* [] */0
+    ]);
+
+var domain = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.fontStyle(/* Italic */1),
+      /* :: */[
+        Style$BsReactNative.color(/* String */Block.__(0, ["#727270"])),
+        /* [] */0
+      ]
+    ]);
+
+var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.color(/* String */Block.__(0, ["#727270"])),
+      /* [] */0
+    ]);
+
+var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.flex(0.1),
+      /* :: */[
+        Style$BsReactNative.alignSelf(/* FlexStart */0),
+        /* [] */0
+      ]
+    ]);
+
 exports.pageContainer = pageContainer;
 exports.news = news;
 exports.separator = separator;
+exports.listItemContainer = listItemContainer;
+exports.listIndex = listIndex;
+exports.listContent = listContent;
+exports.title = title;
+exports.domain = domain;
+exports.timeAgoAndUser = timeAgoAndUser;
+exports.listCommentAndFunc = listCommentAndFunc;
 /* pageContainer Not a pure module */
