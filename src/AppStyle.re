@@ -28,8 +28,9 @@ let separator =
 let listItemContainer =
   style([flex(1.0), flexWrap(Nowrap), flexDirection(Row)]);
 let listIndex = style([flex(0.1), alignSelf(Center)]);
-let listContent = style([flex(0.8)]);
-let title = style([fontWeight(`Bold)]);
+let listContent =
+  style([flex(0.8), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
+let title = style([paddingTop(Pt(5.0)), fontWeight(`Bold)]);
 let domain = style([fontStyle(Italic), color(String("#727270"))]);
 let timeAgoAndUser = style([color(String("#727270"))]);
-let listCommentAndFunc = style([flex(0.1), alignSelf(FlexStart)]);
+let listCommentAndFunc = style([flex(0.1), alignSelf(Center)]);

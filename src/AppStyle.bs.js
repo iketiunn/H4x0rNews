@@ -67,12 +67,21 @@ var listIndex = Style$BsReactNative.style(/* :: */[
 
 var listContent = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(0.8),
-      /* [] */0
+      /* :: */[
+        Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
+        /* :: */[
+          Style$BsReactNative.paddingRight(/* Pt */Block.__(0, [5.0])),
+          /* [] */0
+        ]
+      ]
     ]);
 
 var title = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.fontWeight(/* Bold */737455525),
-      /* [] */0
+      Style$BsReactNative.paddingTop(/* Pt */Block.__(0, [5.0])),
+      /* :: */[
+        Style$BsReactNative.fontWeight(/* Bold */737455525),
+        /* [] */0
+      ]
     ]);
 
 var domain = Style$BsReactNative.style(/* :: */[
@@ -91,7 +100,7 @@ var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
 var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(0.1),
       /* :: */[
-        Style$BsReactNative.alignSelf(/* FlexStart */0),
+        Style$BsReactNative.alignSelf(/* Center */2),
         /* [] */0
       ]
     ]);
