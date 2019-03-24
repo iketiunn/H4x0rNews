@@ -11,7 +11,8 @@
     "reason-react",
     "reason-expo",
     "@glennsl/bs-json",
-    "bs-fetch"
+    "bs-fetch",
+    "bs-react-navigation"
   ],
   "sources": [
     {

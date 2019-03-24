@@ -2,7 +2,8 @@ open BsReactNative;
 
 let handleLink = url => ReasonExpo.WebBrowser.openBrowserAsync(url);
 let component = ReasonReact.statelessComponent("NewsFlatList");
-let make = (~data, ~onEndReached, _children) => {
+let make =
+    (~data, ~onEndReached, ~navigation: Config.navigationProp, _children) => {
   ...component,
   render: _self => {
     /* Need to specified type! */
@@ -31,6 +32,8 @@ let make = (~data, ~onEndReached, _children) => {
         let timeAgo = news.item.time_ago;
         let timeAgoAndUser = user ++ " " ++ timeAgo;
         let commentsCount = string_of_int(news.item.comments_count);
+        let navigateToComment = () =>
+          navigation.navigate(Comments(news.item.id));
         /* Events */
         let openUrl = () =>
           ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
@@ -54,7 +57,7 @@ let make = (~data, ~onEndReached, _children) => {
             <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
           </View>
           <View style=AppStyle.listCommentAndFunc>
-            <Text value=commentsCount />
+            <Text value=commentsCount onPress=navigateToComment />
           </View>
         </View>;
       });
