@@ -33,7 +33,7 @@ let make =
         let timeAgoAndUser = user ++ " " ++ timeAgo;
         let commentsCount = string_of_int(news.item.comments_count);
         let navigateToComment = () =>
-          navigation.navigate(Comments(news.item.id));
+          navigation.push(Comments(title, news.item.id));
         /* Events */
         let openUrl = () =>
           ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;

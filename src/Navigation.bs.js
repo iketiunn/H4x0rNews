@@ -4,23 +4,27 @@
 var NewsPage = require("./NewsPage.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var CommentsPage = require("./CommentsPage.bs.js");
-var SwitchNavigator$BsReactNavigation = require("bs-react-navigation/src/SwitchNavigator.bs.js");
+var StackNavigator$BsReactNavigation = require("bs-react-navigation/src/StackNavigator.bs.js");
 
 function getScreen(route, navigation) {
   if (route) {
     return /* tuple */[
-            ReasonReact.element(undefined, undefined, CommentsPage.make(navigation, route[0], /* array */[])),
-            { }
+            ReasonReact.element(undefined, undefined, CommentsPage.make(route[1], /* array */[])),
+            {
+              title: route[0]
+            }
           ];
   } else {
     return /* tuple */[
             ReasonReact.element(undefined, undefined, NewsPage.make(navigation, /* array */[])),
-            { }
+            {
+              title: "News"
+            }
           ];
   }
 }
 
-var Stack = SwitchNavigator$BsReactNavigation.Create(/* module */[
+var Stack = StackNavigator$BsReactNavigation.Create(/* module */[
       /* initialRoute : News */0,
       /* getScreen */getScreen
     ]);

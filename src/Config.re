@@ -2,5 +2,5 @@ open BsReactNavigation;
 
 type route =
   | News
-  | Comments(int);
-type navigationProp = SwitchNavigator.navigation(route);
+  | Comments(string, int);
+type navigationProp = StackNavigator.navigation(route);

@@ -1,23 +1,25 @@
 open BsReactNavigation;
 /**
- * Stack is unusable due to lack of binding,
+ * Stack lacks of binding,
  * and write binding is pain. (hard to test with yarn link and expo start)
+ *
+ * TODO: Better header style
  */
 open Config;
 
 module Stack =
-  SwitchNavigator.Create({
-    open SwitchNavigator;
+  StackNavigator.Create({
+    open StackNavigator;
 
     type route = Config.route;
 
     let initialRoute = News;
     let getScreen = (route, navigation) =>
       switch (route) {
-      | News => (<NewsPage navigation />, screenOptions())
-      | Comments(storyId) => (
-          <CommentsPage storyId navigation />,
-          screenOptions(),
+      | News => (<NewsPage navigation />, screenOptions(~title="News", ()))
+      | Comments(title, storyId) => (
+          <CommentsPage storyId />,
+          screenOptions(~title, ()),
         )
       };
   });

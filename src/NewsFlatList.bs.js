@@ -41,7 +41,10 @@ function make(data, onEndReached, navigation, _children) {
                               var timeAgoAndUser = user + (" " + timeAgo);
                               var commentsCount = String(news[/* item */0][/* comments_count */6]);
                               var navigateToComment = function (param) {
-                                return Curry._1(navigation[/* navigate */0], /* Comments */[news[/* item */0][/* id */0]]);
+                                return Curry._1(navigation[/* push */0], /* Comments */[
+                                            title,
+                                            news[/* item */0][/* id */0]
+                                          ]);
                               };
                               var openUrl = function (param) {
                                 WebBrowser$ReasonExpo.openBrowserAsync(news[/* item */0][/* url */8]);

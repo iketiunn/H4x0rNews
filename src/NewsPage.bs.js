@@ -21,6 +21,7 @@ function make(navigation, _children) {
     var state = param[/* state */1];
     if (state[/* page */1] < 10 && !state[/* isLoading */2]) {
       var send = param[/* send */3];
+      console.log("loead");
       var newPage = state[/* page */1] + 1 | 0;
       Data.fetchNewList(String(newPage), /* () */0).then((function (newsList) {
               return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[

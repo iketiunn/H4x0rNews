@@ -12,6 +12,7 @@ let component = ReasonReact.reducerComponent("App");
 let make = (~navigation: Config.navigationProp, _children) => {
   let loadNews = ({ReasonReact.state, send}) =>
     if (state.page < 10 && !state.isLoading) {
+      Js.log("loead");
       let newPage = state.page + 1;
       Js.Promise.(
         Data.fetchNewList(~id=string_of_int(newPage), ())
