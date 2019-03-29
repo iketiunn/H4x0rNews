@@ -3,5 +3,5 @@ node_modules
 .merlin
 
 lib
-.bsb.log
+.bsb.lock
 .expo
