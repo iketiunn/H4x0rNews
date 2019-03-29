@@ -67,7 +67,7 @@ module Decode = {
       user: json |> optional(field("user", string)),
       time: json |> field("time", int),
       time_ago: json |> field("time_ago", string),
-      type_: json |> field("type_", string),
+      type_: json |> field("type", string),
       url: json |> field("url", string),
       domain: json |> optional(field("domain", string)),
       comments: json |> field("comments", list(comment)),

@@ -13,7 +13,10 @@ var pageContainer = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(1.0),
       /* :: */[
         Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#FF6600"])),
-        /* [] */0
+        /* :: */[
+          Style$BsReactNative.overflow(/* Hidden */1),
+          /* [] */0
+        ]
       ]
     ]);
 

@@ -10,9 +10,7 @@ function getScreen(route, navigation) {
   if (route) {
     return /* tuple */[
             ReasonReact.element(undefined, undefined, CommentsPage.make(route[1], /* array */[])),
-            {
-              title: route[0]
-            }
+            { }
           ];
   } else {
     return /* tuple */[

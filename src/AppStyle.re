@@ -9,6 +9,7 @@ let pageContainer =
   style([
     flex(1.0),
     backgroundColor(String("#FF6600")),
+    overflow(Hidden),
     /*
      paddingTop(
        Pt(

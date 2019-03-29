@@ -19,7 +19,7 @@ module Stack =
       | News => (<NewsPage navigation />, screenOptions(~title="News", ()))
       | Comments(title, storyId) => (
           <CommentsPage storyId />,
-          screenOptions(~title, ()),
+          screenOptions(),
         )
       };
   });

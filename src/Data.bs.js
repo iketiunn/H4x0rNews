@@ -58,7 +58,7 @@ function story(json) {
                 }), json),
           /* time */Json_decode.field("time", Json_decode.$$int, json),
           /* time_ago */Json_decode.field("time_ago", Json_decode.string, json),
-          /* type_ */Json_decode.field("type_", Json_decode.string, json),
+          /* type_ */Json_decode.field("type", Json_decode.string, json),
           /* url */Json_decode.field("url", Json_decode.string, json),
           /* domain */Json_decode.optional((function (param) {
                   return Json_decode.field("domain", Json_decode.string, param);
