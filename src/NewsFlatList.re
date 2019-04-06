@@ -35,7 +35,10 @@ let make =
           navigation.push(Comments(title, news.item.id));
         /* Events */
         let openUrl = () =>
-          ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
+          domain === "" ?
+            navigation.push(Comments(title, news.item.id)) :
+            ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
+
         /*
           React Native Linking opening new borwser outside the app,
           Expo handle it better, when close the opened url it's more smooth.

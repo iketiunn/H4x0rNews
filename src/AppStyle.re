@@ -30,6 +30,7 @@ module Common = {
   let textCenter = style([textAlign(Center)]);
 
   let header = style([hackerNewsHeaderBackgroundColor]);
+  let navigationTint = String("black");
 };
 
 /** News page */

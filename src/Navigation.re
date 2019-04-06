@@ -31,7 +31,12 @@ module Stack =
         )
       | Comments(title, storyId) => (
           <CommentsPage storyId />,
-          screenOptions(~title, ~headerStyle=AppStyle.Common.header, ()),
+          screenOptions(
+            ~title,
+            ~headerStyle=AppStyle.Common.header,
+            ~headerTintColor=AppStyle.Common.navigationTint,
+            (),
+          ),
         )
       };
   });

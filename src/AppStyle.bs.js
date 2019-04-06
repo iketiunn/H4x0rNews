@@ -41,10 +41,13 @@ var header = Style$BsReactNative.style(/* :: */[
       /* [] */0
     ]);
 
+var Common_003 = /* navigationTint : String */["black"];
+
 var Common = /* module */[
   /* grayFontColor */grayFontColor,
   /* textCenter */textCenter,
-  /* header */header
+  /* header */header,
+  Common_003
 ];
 
 var news = Style$BsReactNative.style(/* :: */[

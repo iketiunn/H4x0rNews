@@ -13,7 +13,8 @@ function getScreen(route, navigation) {
             ReasonReact.element(undefined, undefined, CommentsPage.make(route[1], /* array */[])),
             {
               title: route[0],
-              headerStyle: AppStyle.Common[/* header */2]
+              headerStyle: AppStyle.Common[/* header */2],
+              headerTintColor: AppStyle.Common[/* navigationTint */3]
             }
           ];
   } else {
