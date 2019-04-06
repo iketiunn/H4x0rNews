@@ -4,6 +4,12 @@
 var HTML = require("./HTML.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
+var WebBrowser$ReasonExpo = require("reason-expo/src/WebBrowser.bs.js");
+
+function onLinkPress(_evt, href) {
+  WebBrowser$ReasonExpo.openBrowserAsync(href);
+  return /* () */0;
+}
 
 var component = ReasonReact.statelessComponent("HtmlView");
 
@@ -19,7 +25,7 @@ function make(content, _children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, HTML.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, content, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]));
+              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, HTML.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, content, undefined, undefined, undefined, undefined, undefined, onLinkPress, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, undefined)(/* array */[]))]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
@@ -28,6 +34,7 @@ function make(content, _children) {
         ];
 }
 
+exports.onLinkPress = onLinkPress;
 exports.component = component;
 exports.make = make;
 /* component Not a pure module */

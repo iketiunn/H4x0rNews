@@ -73,6 +73,7 @@ module Decode = {
       comments: json |> field("comments", list(comment)),
     };
 };
+/** NTH: Preferment backend */
 let domain = "https://ikewat-hnapi.now.sh";
 let fetchNewList = (~id="1", ()) =>
   Js.Promise.(

@@ -10,7 +10,9 @@ function getScreen(route, navigation) {
   if (route) {
     return /* tuple */[
             ReasonReact.element(undefined, undefined, CommentsPage.make(route[1], /* array */[])),
-            { }
+            {
+              title: route[0]
+            }
           ];
   } else {
     return /* tuple */[
@@ -23,10 +25,7 @@ function getScreen(route, navigation) {
 }
 
 var Stack = StackNavigator$BsReactNavigation.Create(/* module */[
-      /* initialRoute : Comments */[
-        "test",
-        19587782
-      ],
+      /* initialRoute : News */0,
       /* getScreen */getScreen
     ]);
 

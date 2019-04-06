@@ -31,7 +31,15 @@ var grayFontColor = Style$BsReactNative.style(/* :: */[
       /* [] */0
     ]);
 
-var Common = /* module */[/* grayFontColor */grayFontColor];
+var textCenter = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.textAlign(/* Center */3),
+      /* [] */0
+    ]);
+
+var Common = /* module */[
+  /* grayFontColor */grayFontColor,
+  /* textCenter */textCenter
+];
 
 var news = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(1.0),
@@ -111,7 +119,10 @@ var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
 
 var container = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.display(/* Flex */0),
-      /* [] */0
+      /* :: */[
+        hackerNewsContentBackgroundColor,
+        /* [] */0
+      ]
     ]);
 
 function item(level) {

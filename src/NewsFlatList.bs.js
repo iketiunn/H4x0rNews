@@ -10,8 +10,6 @@ var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var WebBrowser$ReasonExpo = require("reason-expo/src/WebBrowser.bs.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
 
-var handleLink = WebBrowser$ReasonExpo.openBrowserAsync;
-
 var component = ReasonReact.statelessComponent("NewsFlatList");
 
 function make(data, onEndReached, navigation, _children) {
@@ -81,7 +79,6 @@ function make(data, onEndReached, navigation, _children) {
         ];
 }
 
-exports.handleLink = handleLink;
 exports.component = component;
 exports.make = make;
 /* component Not a pure module */

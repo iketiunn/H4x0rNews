@@ -14,7 +14,7 @@ var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js
 var component = ReasonReact.statelessComponent("CommentsFlatList");
 
 function make(data, _children) {
-  var renderComment = function (comments) {
+  var renderComment = function (comments, first) {
     var renderItem = function (param) {
       return FlatList$BsReactNative.renderItem((function (comment) {
                     var match = comment[/* item */0][/* user */2];
@@ -26,14 +26,15 @@ function make(data, _children) {
                                               ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.Common[/* grayFontColor */0]), undefined, undefined, undefined, undefined, undefined, undefined, userAndTimeAge, /* array */[])),
                                               ReasonReact.element(undefined, undefined, HtmlView.make(comment[/* item */0][/* content */5], /* array */[]))
                                             ])),
-                                    match$1 ? renderComment(comment[/* item */0][/* comments */6]) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
+                                    match$1 ? renderComment(comment[/* item */0][/* comments */6], false) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
                                   ]));
                   }), param);
     };
     var keyExtractor = function (_item, index) {
       return String(index);
     };
-    return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(comments), renderItem, keyExtractor, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.CommentsPage[/* paddingLeft */0]))(/* array */[]));
+    var listFooterComponent = first ? ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.Common[/* textCenter */1]), undefined, undefined, undefined, undefined, undefined, undefined, "End of the thread", /* array */[])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
+    return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(comments), renderItem, keyExtractor, undefined, undefined, Js_primitive.some(listFooterComponent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.CommentsPage[/* paddingLeft */0]))(/* array */[]));
   };
   return /* record */[
           /* debugName */component[/* debugName */0],
@@ -47,9 +48,9 @@ function make(data, _children) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
               if (List.length(data) > 0) {
-                return renderComment(data);
+                return renderComment(data, true);
               } else {
-                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "End ot the thread", /* array */[]))]));
+                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.Common[/* textCenter */1]), undefined, undefined, undefined, undefined, undefined, undefined, "No comments", /* array */[]))]));
               }
             }),
           /* initialState */component[/* initialState */10],

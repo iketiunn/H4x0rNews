@@ -1,9 +1,6 @@
 open BsReactNative;
 
 /**
- * TODO:
- * - Better, preferment render component
- * - Handle webview link
  * - Laggy when list got more than 50 on android, using pure html view instead
  */
 let screenWidth = Dimensions.get(`window)##width;

@@ -1,6 +1,5 @@
 open BsReactNative;
 
-let handleLink = url => ReasonExpo.WebBrowser.openBrowserAsync(url);
 let component = ReasonReact.statelessComponent("NewsFlatList");
 let make =
     (~data, ~onEndReached, ~navigation: Config.navigationProp, _children) => {
@@ -43,9 +42,6 @@ let make =
 
           let openUrl = () => Linking.openURL(news.item.url) |> ignore;
          */
-
-        /* TODO: handle route to comments */
-
         <View style=AppStyle.listItemContainer>
           <View style=AppStyle.listIndex>
             <Text value=index style=AppStyle.listIndex />

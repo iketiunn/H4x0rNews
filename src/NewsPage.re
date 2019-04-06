@@ -51,14 +51,12 @@ let make = (~navigation: Config.navigationProp, _children) => {
            */
           <View>
             {
-              if (self.state.isLoading) {
+              self.state.isLoading ?
                 <ActivityIndicator
                   style=AppStyle.activityIndicator
                   size=`large
-                />;
-              } else {
-                <View />;
-              }
+                /> :
+                <View />
             }
           </View>
         </SafeAreaView>,

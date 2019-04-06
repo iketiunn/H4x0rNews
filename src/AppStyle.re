@@ -27,6 +27,7 @@ let pageContainer =
 /** Common */
 module Common = {
   let grayFontColor = style([grayColor]);
+  let textCenter = style([textAlign(Center)]);
 };
 
 /** News page */
@@ -51,7 +52,7 @@ let listCommentAndFunc = style([flex(0.1), alignSelf(Center)]);
 
 /** Comments page */;
 module Comment = {
-  let container = style([display(Flex)]);
+  let container = style([display(Flex), hackerNewsContentBackgroundColor]);
   let item = (level: int) => {
     let borderColor =
       switch (level mod 7) {
