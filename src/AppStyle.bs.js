@@ -4,15 +4,21 @@
 var Block = require("bs-platform/lib/js/block.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
 
+var hackerNewsHeaderBackgroundColor = Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#FF6600"]));
+
+var hackerNewsContentBackgroundColor = Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"]));
+
+var grayColor = Style$BsReactNative.color(/* String */Block.__(0, ["#727270"]));
+
 var activityIndicator = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"])),
+      hackerNewsContentBackgroundColor,
       /* [] */0
     ]);
 
 var pageContainer = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(1.0),
       /* :: */[
-        Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#FF6600"])),
+        hackerNewsHeaderBackgroundColor,
         /* :: */[
           Style$BsReactNative.overflow(/* Hidden */1),
           /* [] */0
@@ -20,10 +26,17 @@ var pageContainer = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
+var grayFontColor = Style$BsReactNative.style(/* :: */[
+      grayColor,
+      /* [] */0
+    ]);
+
+var Common = /* module */[/* grayFontColor */grayFontColor];
+
 var news = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(1.0),
       /* :: */[
-        Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"])),
+        hackerNewsContentBackgroundColor,
         /* [] */0
       ]
     ]);
@@ -83,14 +96,9 @@ var title = Style$BsReactNative.style(/* :: */[
 var domain = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.fontStyle(/* Italic */1),
       /* :: */[
-        Style$BsReactNative.color(/* String */Block.__(0, ["#727270"])),
+        grayColor,
         /* [] */0
       ]
-    ]);
-
-var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.color(/* String */Block.__(0, ["#727270"])),
-      /* [] */0
     ]);
 
 var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
@@ -101,8 +109,92 @@ var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
+var container = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.display(/* Flex */0),
+      /* [] */0
+    ]);
+
+function item(level) {
+  var match = level % 7;
+  var borderColor;
+  switch (match) {
+    case 0 : 
+        borderColor = "#ff5252";
+        break;
+    case 1 : 
+        borderColor = "#34ace0";
+        break;
+    case 2 : 
+        borderColor = "#33d9b2";
+        break;
+    case 3 : 
+        borderColor = "#ffda79";
+        break;
+    case 4 : 
+        borderColor = "#ff793f";
+        break;
+    case 5 : 
+        borderColor = "#ffb142";
+        break;
+    case 6 : 
+        borderColor = "#40407a";
+        break;
+    default:
+      borderColor = "#84817a";
+  }
+  return Style$BsReactNative.style(/* :: */[
+              Style$BsReactNative.borderLeftColor(/* String */Block.__(0, [borderColor])),
+              /* :: */[
+                Style$BsReactNative.borderLeftWidth(3.0),
+                /* :: */[
+                  Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
+                  /* :: */[
+                    Style$BsReactNative.marginTop(/* Pt */Block.__(0, [5.0])),
+                    /* :: */[
+                      hackerNewsContentBackgroundColor,
+                      /* :: */[
+                        Style$BsReactNative.elevation(2.0),
+                        /* :: */[
+                          Style$BsReactNative.shadowColor(/* String */Block.__(0, ["#000000"])),
+                          /* :: */[
+                            Style$BsReactNative.shadowOpacity(0.4),
+                            /* :: */[
+                              Style$BsReactNative.shadowRadius(1.0),
+                              /* :: */[
+                                Style$BsReactNative.shadowOffset(1.0, 0.0),
+                                /* [] */0
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]);
+}
+
+var Comment = /* module */[
+  /* container */container,
+  /* item */item
+];
+
+var paddingLeft = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [8.0])),
+      /* [] */0
+    ]);
+
+var CommentsPage = /* module */[/* paddingLeft */paddingLeft];
+
+var timeAgoAndUser = grayFontColor;
+
+exports.hackerNewsHeaderBackgroundColor = hackerNewsHeaderBackgroundColor;
+exports.hackerNewsContentBackgroundColor = hackerNewsContentBackgroundColor;
+exports.grayColor = grayColor;
 exports.activityIndicator = activityIndicator;
 exports.pageContainer = pageContainer;
+exports.Common = Common;
 exports.news = news;
 exports.separator = separator;
 exports.listItemContainer = listItemContainer;
@@ -112,4 +204,6 @@ exports.title = title;
 exports.domain = domain;
 exports.timeAgoAndUser = timeAgoAndUser;
 exports.listCommentAndFunc = listCommentAndFunc;
-/* activityIndicator Not a pure module */
+exports.Comment = Comment;
+exports.CommentsPage = CommentsPage;
+/* hackerNewsHeaderBackgroundColor Not a pure module */

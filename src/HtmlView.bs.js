@@ -2,14 +2,10 @@
 'use strict';
 
 var HTML = require("./HTML.bs.js");
-var Block = require("bs-platform/lib/js/block.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
-var Dimensions$BsReactNative = require("bs-react-native/src/dimensions.js");
 
-var screenWidth = Dimensions$BsReactNative.get(/* window */-762539024).width;
-
-var component = ReasonReact.reducerComponent("ResizedWebView");
+var component = ReasonReact.statelessComponent("HtmlView");
 
 function make(content, _children) {
   return /* record */[
@@ -25,18 +21,13 @@ function make(content, _children) {
           /* render */(function (_self) {
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, HTML.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, content, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]));
             }),
-          /* initialState */(function (param) {
-              return /* record */[/* webViewHeight */0.0];
-            }),
+          /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
-          /* reducer */(function (action, _state) {
-              return /* Update */Block.__(0, [/* record */[/* webViewHeight */action[0]]]);
-            }),
+          /* reducer */component[/* reducer */12],
           /* jsElementWrapped */component[/* jsElementWrapped */13]
         ];
 }
 
-exports.screenWidth = screenWidth;
 exports.component = component;
 exports.make = make;
-/* screenWidth Not a pure module */
+/* component Not a pure module */

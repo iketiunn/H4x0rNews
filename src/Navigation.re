@@ -13,7 +13,12 @@ module Stack =
 
     type route = Config.route;
 
-    let initialRoute = News;
+    /*
+     * To debugging comment style
+     * let initialRoute = News;
+     */
+
+    let initialRoute = Comments("test", 19587782);
     let getScreen = (route, navigation) =>
       switch (route) {
       | News => (<NewsPage navigation />, screenOptions(~title="News", ()))

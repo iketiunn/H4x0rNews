@@ -8,24 +8,18 @@ let make = (~data: list(Data.comment), _children) => {
         let user =
           switch (comment.item.user) {
           | Some(u) => u
-          | None => ""
+          | None => "[deleted]"
           };
         let userAndTimeAge = user ++ " " ++ comment.item.time_ago;
-        let padding = float_of_int(comment.item.level * 1);
         /*
            TODO:
-             - Better style
+             - Fold comment
          */
-        <View
-          style={
-            Style.style([
-              Style.paddingLeft(Style.Pt(padding)),
-              Style.flex(1.0),
-              Style.backgroundColor(String("#F6F6EF")),
-            ])
-          }>
-          <Text value=userAndTimeAge />
-          <HtmlView content={comment.item.content} />
+        <View style=AppStyle.Comment.container>
+          <View style={AppStyle.Comment.item(comment.item.level)}>
+            <Text style=AppStyle.Common.grayFontColor value=userAndTimeAge />
+            <HtmlView content={comment.item.content} />
+          </View>
           {
             List.length(comment.item.comments) > 0 ?
               renderComment(comment.item.comments) : <View />
@@ -33,13 +27,11 @@ let make = (~data: list(Data.comment), _children) => {
         </View>;
       });
     let keyExtractor = (_item: Data.comment, index) => string_of_int(index);
-    let itemSeparatorComponent =
-      FlatList.separatorComponent(_ => <View style=AppStyle.separator />);
     <FlatList
       data={Array.of_list(comments)}
       keyExtractor
       renderItem
-      itemSeparatorComponent
+      style=AppStyle.CommentsPage.paddingLeft
     />;
   };
   {

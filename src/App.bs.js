@@ -3,10 +3,10 @@
 
 var Navigation = require("./Navigation.bs.js");
 
-var swither = Navigation.render;
+var stack = Navigation.render;
 
 var app = Navigation.render;
 
-exports.swither = swither;
+exports.stack = stack;
 exports.app = app;
 /* Navigation Not a pure module */

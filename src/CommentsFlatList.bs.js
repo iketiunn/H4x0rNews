@@ -3,14 +3,12 @@
 
 var List = require("bs-platform/lib/js/list.js");
 var $$Array = require("bs-platform/lib/js/array.js");
-var Block = require("bs-platform/lib/js/block.js");
 var AppStyle = require("./AppStyle.bs.js");
 var HtmlView = require("./HtmlView.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
-var Style$BsReactNative = require("bs-react-native/src/style.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
 
 var component = ReasonReact.statelessComponent("CommentsFlatList");
@@ -20,22 +18,14 @@ function make(data, _children) {
     var renderItem = function (param) {
       return FlatList$BsReactNative.renderItem((function (comment) {
                     var match = comment[/* item */0][/* user */2];
-                    var user = match !== undefined ? match : "";
+                    var user = match !== undefined ? match : "[deleted]";
                     var userAndTimeAge = user + (" " + comment[/* item */0][/* time_ago */4]);
-                    var padding = (comment[/* item */0][/* level */1] << 0);
                     var match$1 = List.length(comment[/* item */0][/* comments */6]) > 0;
-                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(Style$BsReactNative.style(/* :: */[
-                                              Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [padding])),
-                                              /* :: */[
-                                                Style$BsReactNative.flex(1.0),
-                                                /* :: */[
-                                                  Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"])),
-                                                  /* [] */0
-                                                ]
-                                              ]
-                                            ])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                    ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, userAndTimeAge, /* array */[])),
-                                    ReasonReact.element(undefined, undefined, HtmlView.make(comment[/* item */0][/* content */5], /* array */[])),
+                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.Comment[/* container */0]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                    ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.Comment[/* item */1](comment[/* item */0][/* level */1])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.Common[/* grayFontColor */0]), undefined, undefined, undefined, undefined, undefined, undefined, userAndTimeAge, /* array */[])),
+                                              ReasonReact.element(undefined, undefined, HtmlView.make(comment[/* item */0][/* content */5], /* array */[]))
+                                            ])),
                                     match$1 ? renderComment(comment[/* item */0][/* comments */6]) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
                                   ]));
                   }), param);
@@ -43,12 +33,7 @@ function make(data, _children) {
     var keyExtractor = function (_item, index) {
       return String(index);
     };
-    var itemSeparatorComponent = function (param) {
-      return FlatList$BsReactNative.separatorComponent((function (param) {
-                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.separator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
-                  }), param);
-    };
-    return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(comments), renderItem, keyExtractor, Js_primitive.some(itemSeparatorComponent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
+    return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(comments), renderItem, keyExtractor, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.CommentsPage[/* paddingLeft */0]))(/* array */[]));
   };
   return /* record */[
           /* debugName */component[/* debugName */0],

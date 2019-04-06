@@ -15,7 +15,7 @@ let make =
       ~alterChildren=?,
       ~alterNode=?,
       ~html: string,
-      ~uri=?,
+      ~uri: option(string)=?,
       ~tagsStyles=?,
       ~classesStyles=?,
       ~containerStyle=?,

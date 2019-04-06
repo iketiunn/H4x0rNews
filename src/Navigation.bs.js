@@ -23,7 +23,10 @@ function getScreen(route, navigation) {
 }
 
 var Stack = StackNavigator$BsReactNavigation.Create(/* module */[
-      /* initialRoute : News */0,
+      /* initialRoute : Comments */[
+        "test",
+        19587782
+      ],
       /* getScreen */getScreen
     ]);
 

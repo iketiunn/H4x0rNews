@@ -1,2 +1,2 @@
-let swither = Navigation.render;
-let app = swither;
+let stack = Navigation.render;
+let app = stack;
