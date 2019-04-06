@@ -1534,10 +1534,9 @@ bs-react-native@^0.10.0:
   resolved "https://registry.yarnpkg.com/bs-react-native/-/bs-react-native-0.10.0.tgz#4a9167cbe4c858008a9e56a0f745ba723c74101c"
   integrity sha512-QpSbKwuYbDU1qBrxplmKvO8TZOtK2DpevoOUxDm0NfMNAdF6oacSbJfqMx89n2eGzMm8imZ3JsUeZPl6OT2N4A==
 
-bs-react-navigation@^0.2.0:
+"bs-react-navigation@git+https://git@github.com/ikewat/bs-react-navigation.git":
   version "0.2.0"
-  resolved "https://registry.yarnpkg.com/bs-react-navigation/-/bs-react-navigation-0.2.0.tgz#004e732dff23619c9af1e8a9064203dbf9ed567e"
-  integrity sha512-XyXeAiehIrMeYE1dvdEuUPg0WBdwbW8Kvz/Y431aJMOHGyiCC+pINMJtVQ0QDuik9P5yrYmrh7tU1eq/jw8lRw==
+  resolved "git+https://git@github.com/ikewat/bs-react-navigation.git#d45005d76b47b807d3a9de59d2ba0e45c426f2a1"
   dependencies:
     "@react-navigation/core" "^3.0.1"
     "@react-navigation/native" "^3.0.3"
