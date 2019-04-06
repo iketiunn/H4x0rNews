@@ -5,7 +5,7 @@ type state = {
   isLoading: bool,
 };
 type action =
-  | Loaded(option(Data.story))
+  | Loaded(Data.story)
   | Loading;
 let component = ReasonReact.reducerComponent("Comments");
 let make = (~storyId: int, _children) => {
@@ -13,7 +13,7 @@ let make = (~storyId: int, _children) => {
     if (!state.isLoading) {
       Js.Promise.(
         Data.fetchStory(string_of_int(storyId))
-        |> then_(story => resolve(send(Loaded(Some(story)))))
+        |> then_(story => resolve(send(Loaded(story))))
         |> ignore
       );
 
@@ -25,27 +25,29 @@ let make = (~storyId: int, _children) => {
     didMount: loadComments,
     reducer: (action, state) =>
       switch (action) {
-      | Loaded(story) => ReasonReact.Update({story, isLoading: false})
+      | Loaded(story) =>
+        ReasonReact.Update({story: Some(story), isLoading: false})
       | Loading => ReasonReact.Update({...state, isLoading: true})
       },
     render: self =>
       <SafeAreaView style=AppStyle.pageContainer>
         <View style=AppStyle.news>
-          <CommentsFlatList data={self.state.story} />
-        </View>
-        /*
-         * Footer && ActivityIndicator
-         * TODO: Transparent bg
-         */
-        <View>
           {
-            if (self.state.isLoading) {
-              <ActivityIndicator
-                style=AppStyle.activityIndicator
-                size=`large
-              />;
-            } else {
-              <View />;
+            switch (self.state.story) {
+            | Some(story) => <CommentsFlatList data={story.comments} />
+            | None =>
+              <View>
+                {
+                  if (self.state.isLoading) {
+                    <ActivityIndicator
+                      style=AppStyle.activityIndicator
+                      size=`large
+                    />;
+                  } else {
+                    <View />;
+                  }
+                }
+              </View>
             }
           }
         </View>

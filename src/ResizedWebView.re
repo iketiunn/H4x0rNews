@@ -1,5 +1,9 @@
 open BsReactNative;
 
+/**
+ * TODO:
+ * - Handle webview link
+ */
 let screenWidth = Dimensions.get(`window)##width;
 type state = {webViewHeight: float};
 type action =

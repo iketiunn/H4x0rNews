@@ -39,9 +39,7 @@ function comment(json) {
           /* time_ago */Json_decode.field("time_ago", Json_decode.string, json),
           /* content */Json_decode.field("content", Json_decode.string, json),
           /* comments */Json_decode.field("comments", (function (param) {
-                  return Json_decode.list((function (param) {
-                                return Json_decode.optional(comment, param);
-                              }), param);
+                  return Json_decode.list(comment, param);
                 }), json)
         ];
 }

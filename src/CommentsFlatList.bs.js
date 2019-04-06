@@ -14,6 +14,30 @@ var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js
 var component = ReasonReact.statelessComponent("CommentsFlatList");
 
 function make(data, _children) {
+  var renderComment = function (comments) {
+    var renderItem = function (param) {
+      return FlatList$BsReactNative.renderItem((function (comment) {
+                    var match = comment[/* item */0][/* user */2];
+                    var user = match !== undefined ? match : "";
+                    var userAndTimeAge = user + (" " + comment[/* item */0][/* time_ago */4]);
+                    var match$1 = List.length(comment[/* item */0][/* comments */6]) > 0;
+                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                    ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, userAndTimeAge, /* array */[])),
+                                    ReasonReact.element(undefined, undefined, ResizedWebView.make(comment[/* item */0][/* content */5], /* array */[])),
+                                    match$1 ? renderComment(comment[/* item */0][/* comments */6]) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
+                                  ]));
+                  }), param);
+    };
+    var keyExtractor = function (_item, index) {
+      return String(index);
+    };
+    var itemSeparatorComponent = function (param) {
+      return FlatList$BsReactNative.separatorComponent((function (param) {
+                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.separator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
+                  }), param);
+    };
+    return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(comments), renderItem, keyExtractor, Js_primitive.some(itemSeparatorComponent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
+  };
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -25,34 +49,10 @@ function make(data, _children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              if (data !== undefined) {
-                var story = data;
-                if (List.length(story[/* comments */9]) > 0) {
-                  var renderItem = function (param) {
-                    return FlatList$BsReactNative.renderItem((function (comment) {
-                                  var match = comment[/* item */0][/* user */2];
-                                  var user = match !== undefined ? match : "";
-                                  var userAndTimeAge = user + (" " + comment[/* item */0][/* time_ago */4]);
-                                  return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                                  ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, userAndTimeAge, /* array */[])),
-                                                  ReasonReact.element(undefined, undefined, ResizedWebView.make(comment[/* item */0][/* content */5], /* array */[]))
-                                                ]));
-                                }), param);
-                  };
-                  var keyExtractor = function (_item, index) {
-                    return String(index);
-                  };
-                  var itemSeparatorComponent = function (param) {
-                    return FlatList$BsReactNative.separatorComponent((function (param) {
-                                  return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.separator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
-                                }), param);
-                  };
-                  return ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(story[/* comments */9]), renderItem, keyExtractor, Js_primitive.some(itemSeparatorComponent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]));
-                } else {
-                  return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "No comment!", /* array */[]))]));
-                }
+              if (List.length(data) > 0) {
+                return renderComment(data);
               } else {
-                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "Loading...", /* array */[]))]));
+                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "Loding...", /* array */[]))]));
               }
             }),
           /* initialState */component[/* initialState */10],

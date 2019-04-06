@@ -18,7 +18,7 @@ type comment = {
   time: int,
   time_ago: string,
   content: string,
-  comments: list(option(comment)),
+  comments: list(comment),
 };
 type story = {
   id: int,
@@ -56,7 +56,7 @@ module Decode = {
       time: json |> field("time", int),
       time_ago: json |> field("time_ago", string),
       content: json |> field("content", string),
-      comments: json |> field("comments", list(optional(comment))),
+      comments: json |> field("comments", list(comment)),
     };
 
   let story = json: story =>
