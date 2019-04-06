@@ -47,7 +47,6 @@ let make = (~navigation: Config.navigationProp, _children) => {
           </View>
           /*
            * Footer && ActivityIndicator
-           * TODO: Transparent bg
            */
           <View>
             {

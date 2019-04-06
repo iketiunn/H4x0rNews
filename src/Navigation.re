@@ -16,15 +16,22 @@ module Stack =
      * To debugging comment style
      * let initialRoute = Comments("test", 19587782);
      *
-     * TODO: custom style the header
+     * Done: custom style the header, by adding binding in node_modules
      */
     let initialRoute = News;
     let getScreen = (route, navigation) =>
       switch (route) {
-      | News => (<NewsPage navigation />, screenOptions(~title="News", ()))
+      | News => (
+          <NewsPage navigation />,
+          screenOptions(
+            ~title="Top News",
+            ~headerStyle=AppStyle.Common.header,
+            (),
+          ),
+        )
       | Comments(title, storyId) => (
           <CommentsPage storyId />,
-          screenOptions(~title, ()),
+          screenOptions(~title, ~headerStyle=AppStyle.Common.header, ()),
         )
       };
   });

@@ -36,9 +36,15 @@ var textCenter = Style$BsReactNative.style(/* :: */[
       /* [] */0
     ]);
 
+var header = Style$BsReactNative.style(/* :: */[
+      hackerNewsHeaderBackgroundColor,
+      /* [] */0
+    ]);
+
 var Common = /* module */[
   /* grayFontColor */grayFontColor,
-  /* textCenter */textCenter
+  /* textCenter */textCenter,
+  /* header */header
 ];
 
 var news = Style$BsReactNative.style(/* :: */[

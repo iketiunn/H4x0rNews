@@ -28,6 +28,8 @@ let pageContainer =
 module Common = {
   let grayFontColor = style([grayColor]);
   let textCenter = style([textAlign(Center)]);
+
+  let header = style([hackerNewsHeaderBackgroundColor]);
 };
 
 /** News page */
