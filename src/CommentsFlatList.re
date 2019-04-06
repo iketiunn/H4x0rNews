@@ -1,9 +1,6 @@
 open BsReactNative;
 
 let component = ReasonReact.statelessComponent("CommentsFlatList");
-/**
- * story.comment[], may got a empty array
- */
 let make = (~data: list(Data.comment), _children) => {
   let rec renderComment = (comments: list(Data.comment)) => {
     let renderItem =
@@ -14,19 +11,26 @@ let make = (~data: list(Data.comment), _children) => {
           | None => ""
           };
         let userAndTimeAge = user ++ " " ++ comment.item.time_ago;
-        /**
-               TODO:
-                 - Better style
-             */
-        <View style=AppStyle.news>
+        let padding = float_of_int(comment.item.level * 1);
+        /*
+           TODO:
+             - Better style
+         */
+        <View
+          style={
+            Style.style([
+              Style.paddingLeft(Style.Pt(padding)),
+              Style.flex(1.0),
+              Style.backgroundColor(String("#F6F6EF")),
+            ])
+          }>
           <Text value=userAndTimeAge />
-          <ResizedWebView content={comment.item.content} />
+          <HtmlView content={comment.item.content} />
           {
             List.length(comment.item.comments) > 0 ?
               renderComment(comment.item.comments) : <View />
           }
         </View>;
-        /* Next level comment */
       });
     let keyExtractor = (_item: Data.comment, index) => string_of_int(index);
     let itemSeparatorComponent =
@@ -44,7 +48,7 @@ let make = (~data: list(Data.comment), _children) => {
       if (List.length(data) > 0) {
         renderComment(data);
       } else {
-        <View> <Text value="Loding..." /> </View>;
+        <View> <Text value="End ot the thread" /> </View>;
       },
   };
 };

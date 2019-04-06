@@ -2,7 +2,9 @@ open BsReactNative;
 
 /**
  * TODO:
+ * - Better, preferment render component
  * - Handle webview link
+ * - Laggy when list got more than 50 on android, using pure html view instead
  */
 let screenWidth = Dimensions.get(`window)##width;
 type state = {webViewHeight: float};
@@ -40,8 +42,8 @@ let make = (~content: string, _children) => {
             | Some(h) =>
               let isNum = Js.String.match(Js.Re.fromString("[0-9]+"), h);
               switch (isNum) {
-              | Some(mached) =>
-                mached
+              | Some(matched) =>
+                matched
                 |> Array.to_list
                 |> List.hd
                 |> float_of_string

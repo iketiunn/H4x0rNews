@@ -3,12 +3,14 @@
 
 var List = require("bs-platform/lib/js/list.js");
 var $$Array = require("bs-platform/lib/js/array.js");
+var Block = require("bs-platform/lib/js/block.js");
 var AppStyle = require("./AppStyle.bs.js");
+var HtmlView = require("./HtmlView.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
-var ResizedWebView = require("./ResizedWebView.bs.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
+var Style$BsReactNative = require("bs-react-native/src/style.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
 
 var component = ReasonReact.statelessComponent("CommentsFlatList");
@@ -20,10 +22,20 @@ function make(data, _children) {
                     var match = comment[/* item */0][/* user */2];
                     var user = match !== undefined ? match : "";
                     var userAndTimeAge = user + (" " + comment[/* item */0][/* time_ago */4]);
+                    var padding = (comment[/* item */0][/* level */1] << 0);
                     var match$1 = List.length(comment[/* item */0][/* comments */6]) > 0;
-                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                    return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(Style$BsReactNative.style(/* :: */[
+                                              Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [padding])),
+                                              /* :: */[
+                                                Style$BsReactNative.flex(1.0),
+                                                /* :: */[
+                                                  Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"])),
+                                                  /* [] */0
+                                                ]
+                                              ]
+                                            ])), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                     ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, userAndTimeAge, /* array */[])),
-                                    ReasonReact.element(undefined, undefined, ResizedWebView.make(comment[/* item */0][/* content */5], /* array */[])),
+                                    ReasonReact.element(undefined, undefined, HtmlView.make(comment[/* item */0][/* content */5], /* array */[])),
                                     match$1 ? renderComment(comment[/* item */0][/* comments */6]) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
                                   ]));
                   }), param);
@@ -52,7 +64,7 @@ function make(data, _children) {
               if (List.length(data) > 0) {
                 return renderComment(data);
               } else {
-                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "Loding...", /* array */[]))]));
+                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "End ot the thread", /* array */[]))]));
               }
             }),
           /* initialState */component[/* initialState */10],
