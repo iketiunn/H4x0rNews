@@ -37,6 +37,7 @@ let make =
         let openUrl = () =>
           domain === "" ?
             navigation.push(Comments(title, news.item.id)) :
+            /* Linking.openURL(news.item.url) |> ignore; */
             ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
 
         /*
