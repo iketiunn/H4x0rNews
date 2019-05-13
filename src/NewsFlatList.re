@@ -2,7 +2,14 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("NewsFlatList");
 let make =
-    (~data, ~onEndReached, ~navigation: Config.navigationProp, _children) => {
+    (
+      ~data,
+      ~refreshing,
+      ~onRefresh,
+      ~onEndReached,
+      ~navigation: Config.navigationProp,
+      _children,
+    ) => {
   ...component,
   render: _self => {
     /* Need to specified type! */
@@ -67,6 +74,8 @@ let make =
       FlatList.separatorComponent(_ => <View style=AppStyle.separator />);
     <FlatList
       data
+      refreshing
+      onRefresh
       keyExtractor
       renderItem
       itemSeparatorComponent

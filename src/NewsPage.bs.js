@@ -28,10 +28,17 @@ function make(navigation, _children) {
                                 newsList
                               ]]));
             }));
-      return Curry._1(send, /* Loading */0);
+      return Curry._1(send, /* Loading */1);
     } else {
       return 0;
     }
+  };
+  var init = function (param) {
+    return /* record */[
+            /* newsList : [] */0,
+            /* page */0,
+            /* isLoading */false
+          ];
   };
   return /* record */[
           /* debugName */component[/* debugName */0],
@@ -67,34 +74,39 @@ function make(navigation, _children) {
                               undefined,
                               undefined,
                               /* array */[
-                                ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), (function (param) {
+                                ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), self[/* state */1][/* isLoading */2], (function (param) {
+                                                      Curry._1(self[/* send */3], /* Init */0);
+                                                      return loadNews(self);
+                                                    }), (function (param) {
                                                       return loadNews(self);
                                                     }), navigation, /* array */[]))])),
                                 ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[match ? ReasonReact.element(undefined, undefined, ActivityIndicator$BsReactNative.make(undefined, undefined, /* large */-272944197, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.activityIndicator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]))
                               ]
                             ]));
             }),
-          /* initialState */(function (param) {
-              return /* record */[
-                      /* newsList : [] */0,
-                      /* page */0,
-                      /* isLoading */false
-                    ];
-            }),
+          /* initialState */init,
           /* retainedProps */component[/* retainedProps */11],
           /* reducer */(function (action, state) {
-              if (action) {
+              if (typeof action === "number") {
+                if (action !== 0) {
+                  return /* Update */Block.__(0, [/* record */[
+                              /* newsList */state[/* newsList */0],
+                              /* page */state[/* page */1],
+                              /* isLoading */true
+                            ]]);
+                } else {
+                  return /* Update */Block.__(0, [/* record */[
+                              /* newsList : [] */0,
+                              /* page */0,
+                              /* isLoading */false
+                            ]]);
+                }
+              } else {
                 var match = action[0];
                 return /* Update */Block.__(0, [/* record */[
                             /* newsList */List.append(state[/* newsList */0], match[1]),
                             /* page */match[0],
                             /* isLoading */false
-                          ]]);
-              } else {
-                return /* Update */Block.__(0, [/* record */[
-                            /* newsList */state[/* newsList */0],
-                            /* page */state[/* page */1],
-                            /* isLoading */true
                           ]]);
               }
             }),

@@ -6,6 +6,7 @@ type state = {
   isLoading: bool,
 };
 type action =
+  | Init
   | Loaded((int, Data.newsList))
   | Loading;
 let component = ReasonReact.reducerComponent("App");
@@ -20,12 +21,14 @@ let make = (~navigation: Config.navigationProp, _children) => {
       );
       send(Loading);
     };
+  let init = () => {newsList: [], page: 0, isLoading: false};
   {
     ...component,
-    initialState: () => {newsList: [], page: 0, isLoading: false},
+    initialState: init,
     didMount: loadNews,
     reducer: (action, state) =>
       switch (action) {
+      | Init => ReasonReact.Update(init())
       | Loaded((newPage, newList)) =>
         ReasonReact.Update({
           page: newPage,
@@ -41,6 +44,13 @@ let make = (~navigation: Config.navigationProp, _children) => {
           <View style=AppStyle.news>
             <NewsFlatList
               data={Array.of_list(self.state.newsList)}
+              refreshing={self.state.isLoading}
+              onRefresh={
+                _ => {
+                  self.send(Init);
+                  loadNews(self);
+                }
+              }
               onEndReached={_ => loadNews(self)}
               navigation
             />
