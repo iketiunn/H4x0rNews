@@ -9,6 +9,9 @@
       "ios",
       "android"
     ],
+    "android": {
+      "package": "com.ikewat.h4x0rnews"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
