@@ -55,19 +55,6 @@ let make = (~navigation: Config.navigationProp, _children) => {
               navigation
             />
           </View>
-          /*
-           * Footer && ActivityIndicator
-           */
-          <View>
-            {
-              self.state.isLoading ?
-                <ActivityIndicator
-                  style=AppStyle.activityIndicator
-                  size=`large
-                /> :
-                <View />
-            }
-          </View>
         </SafeAreaView>,
   };
 };
