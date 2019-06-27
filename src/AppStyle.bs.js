@@ -73,7 +73,7 @@ var separator = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listItemContainer = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(1.0),
+      Style$BsReactNative.flex(0.125),
       /* :: */[
         Style$BsReactNative.flexWrap(/* Nowrap */1),
         /* :: */[
@@ -84,7 +84,7 @@ var listItemContainer = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listIndex = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.1),
+      Style$BsReactNative.flex(0.125),
       /* :: */[
         Style$BsReactNative.alignSelf(/* Center */2),
         /* [] */0
@@ -92,7 +92,7 @@ var listIndex = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listContent = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.8),
+      Style$BsReactNative.flex(0.75),
       /* :: */[
         Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
         /* :: */[
