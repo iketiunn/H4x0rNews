@@ -21,6 +21,8 @@ let make = (~navigation: Config.navigationProp, _children) => {
       );
       send(Loading);
     };
+  /* let setNewsFlatListRef = (listRef, {ReasonReact.state, send}) =>
+     self.send(SetNewsFlatListRef(listRef)); */
   let init = () => {newsList: [], page: 0, isLoading: false};
   {
     ...component,
@@ -53,6 +55,15 @@ let make = (~navigation: Config.navigationProp, _children) => {
               }
               onEndReached={_ => loadNews(self)}
               navigation
+            />
+            /*** Since back to top is not available due to ref api is not implement */
+            <BackToTopButton
+              onPress={
+                _ => {
+                  self.send(Init);
+                  loadNews(self);
+                }
+              }
             />
           </View>
         </SafeAreaView>,

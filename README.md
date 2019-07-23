@@ -14,10 +14,10 @@
     - share article link
     - share news link
       - calls native share
-- [] Back to top
-  - back event & not at top -> back top
-  - back event & at top -> prompt to exit
-  - back event & prompt to exit -> exit
+- [O] Back to top
+  - back event is not available on iOS
+  - float back button one the bottom
+  - Since back to top is not available due to ref api is not implement
 - [] Eject from expo to publish ?
 - [] Better comments page view
   - Current combine Reddit seems great
