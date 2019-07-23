@@ -18,8 +18,5 @@
   - back event is not available on iOS
   - float back button one the bottom
   - Since back to top is not available due to ref api is not implement
-- [] Eject from expo to publish ?
 - [] Better comments page view
   - Current combine Reddit seems great
-- [] About page
-  - Need to hack current navigation
