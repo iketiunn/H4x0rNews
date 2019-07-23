@@ -7,10 +7,18 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
+var Image$BsReactNative = require("bs-react-native/src/components/image.js");
 var WebBrowser$ReasonExpo = require("reason-expo/src/WebBrowser.bs.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
 
 var component = ReasonReact.statelessComponent("NewsFlatList");
+
+var commentImageSource_001 = require("../assets/comment.png");
+
+var commentImageSource = /* `Required */[
+  202657151,
+  commentImageSource_001
+];
 
 function make(data, refreshing, onRefresh, onEndReached, navigation, _children) {
   return /* record */[
@@ -32,9 +40,9 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                               var point = String(pointInt) + "p";
                               var title = news[/* item */0][/* title */1];
                               var match$1 = news[/* item */0][/* domain */9];
-                              var domain = match$1 !== undefined ? "(" + (match$1 + ")") : "";
+                              var domain = match$1 !== undefined ? match$1 : "";
                               var match$2 = news[/* item */0][/* user */3];
-                              var user = match$2 !== undefined ? " by " + match$2 : "";
+                              var user = match$2 !== undefined ? "by " + match$2 : "";
                               var timeAgo = news[/* item */0][/* time_ago */5];
                               var timeAgoAndUser = user + (" " + timeAgo);
                               var commentsCount = String(news[/* item */0][/* comments_count */6]);
@@ -64,9 +72,15 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                               ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listContent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, openUrl, undefined, undefined, Js_primitive.some(AppStyle.title), undefined, undefined, undefined, undefined, undefined, undefined, title, /* array */[])),
                                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.domain), undefined, undefined, undefined, undefined, undefined, undefined, domain, /* array */[])),
-                                                        ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.timeAgoAndUser), undefined, undefined, undefined, undefined, undefined, undefined, timeAgoAndUser, /* array */[]))
+                                                        ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.inlineContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                                                  ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.timeAgoAndUser), undefined, undefined, undefined, undefined, undefined, undefined, timeAgoAndUser, /* array */[])),
+                                                                  ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.commentContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                                                            ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, navigateToComment, undefined, undefined, Js_primitive.some(AppStyle.commentCount), undefined, undefined, undefined, undefined, undefined, undefined, commentsCount, /* array */[])),
+                                                                            ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, commentImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
+                                                                          ]))
+                                                                ]))
                                                       ])),
-                                              ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listCommentAndFunc), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, navigateToComment, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, commentsCount, /* array */[]))]))
+                                              ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listCommentAndFunc), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "...", /* array */[]))]))
                                             ]));
                             }), param);
               };
@@ -88,5 +102,6 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
 }
 
 exports.component = component;
+exports.commentImageSource = commentImageSource;
 exports.make = make;
 /* component Not a pure module */

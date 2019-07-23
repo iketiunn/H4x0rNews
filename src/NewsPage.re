@@ -41,31 +41,29 @@ let make = (~navigation: Config.navigationProp, _children) => {
       },
     render: self =>
       <SafeAreaView style=AppStyle.pageContainer>
-        /* Header, title, back button */
-
-          <View style=AppStyle.news>
-            <NewsFlatList
-              data={Array.of_list(self.state.newsList)}
-              refreshing={self.state.isLoading}
-              onRefresh={
-                _ => {
-                  self.send(Init);
-                  loadNews(self);
-                }
+        <View style=AppStyle.news>
+          <NewsFlatList
+            data={Array.of_list(self.state.newsList)}
+            refreshing={self.state.isLoading}
+            onRefresh={
+              _ => {
+                self.send(Init);
+                loadNews(self);
               }
-              onEndReached={_ => loadNews(self)}
-              navigation
-            />
-            /*** Since back to top is not available due to ref api is not implement */
-            <BackToTopButton
-              onPress={
-                _ => {
-                  self.send(Init);
-                  loadNews(self);
-                }
+            }
+            onEndReached={_ => loadNews(self)}
+            navigation
+          />
+          /*** Since back to top is not available due to ref api is not implement */
+          <BackToTopButton
+            onPress={
+              _ => {
+                self.send(Init);
+                loadNews(self);
               }
-            />
-          </View>
-        </SafeAreaView>,
+            }
+          />
+        </View>
+      </SafeAreaView>,
   };
 };

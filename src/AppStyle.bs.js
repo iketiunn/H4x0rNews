@@ -73,7 +73,7 @@ var separator = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listItemContainer = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.125),
+      Style$BsReactNative.display(/* Flex */0),
       /* :: */[
         Style$BsReactNative.flexWrap(/* Nowrap */1),
         /* :: */[
@@ -92,7 +92,7 @@ var listIndex = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listContent = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.75),
+      Style$BsReactNative.flex(0.8),
       /* :: */[
         Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
         /* :: */[
@@ -118,12 +118,52 @@ var domain = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.1),
+var inlineContainer = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.display(/* Flex */0),
       /* :: */[
-        Style$BsReactNative.alignSelf(/* Center */2),
+        Style$BsReactNative.flexDirection(/* Row */0),
+        /* :: */[
+          Style$BsReactNative.justifyContent(/* SpaceBetween */5),
+          /* [] */0
+        ]
+      ]
+    ]);
+
+var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.display(/* Flex */0),
+      /* :: */[
+        grayColor,
         /* [] */0
       ]
+    ]);
+
+var commentContainer = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.display(/* Flex */0),
+      /* :: */[
+        Style$BsReactNative.flexDirection(/* Row */0),
+        /* :: */[
+          Style$BsReactNative.alignItems(/* Center */2),
+          /* [] */0
+        ]
+      ]
+    ]);
+
+var commentImage = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.width(/* Pt */Block.__(0, [15.0])),
+      /* :: */[
+        Style$BsReactNative.height(/* Pt */Block.__(0, [15.0])),
+        /* [] */0
+      ]
+    ]);
+
+var commentCount = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.paddingRight(/* Pt */Block.__(0, [3.0])),
+      /* [] */0
+    ]);
+
+var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.flex(0.075),
+      /* [] */0
     ]);
 
 var container = Style$BsReactNative.style(/* :: */[
@@ -207,8 +247,6 @@ var paddingLeft = Style$BsReactNative.style(/* :: */[
 
 var CommentsPage = /* module */[/* paddingLeft */paddingLeft];
 
-var timeAgoAndUser = grayFontColor;
-
 exports.hackerNewsHeaderBackgroundColor = hackerNewsHeaderBackgroundColor;
 exports.hackerNewsContentBackgroundColor = hackerNewsContentBackgroundColor;
 exports.grayColor = grayColor;
@@ -222,7 +260,11 @@ exports.listIndex = listIndex;
 exports.listContent = listContent;
 exports.title = title;
 exports.domain = domain;
+exports.inlineContainer = inlineContainer;
 exports.timeAgoAndUser = timeAgoAndUser;
+exports.commentContainer = commentContainer;
+exports.commentImage = commentImage;
+exports.commentCount = commentCount;
 exports.listCommentAndFunc = listCommentAndFunc;
 exports.Comment = Comment;
 exports.CommentsPage = CommentsPage;

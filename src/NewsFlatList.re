@@ -1,6 +1,8 @@
 open BsReactNative;
 
 let component = ReasonReact.statelessComponent("NewsFlatList");
+let commentImageSource =
+  `Required(Packager.require("../assets/comment.png"));
 let make =
     (
       ~data,
@@ -29,12 +31,12 @@ let make =
           let title = news.item.title;
           let domain =
             switch (news.item.domain) {
-            | Some(d) => "(" ++ d ++ ")"
+            | Some(d) => d
             | None => ""
             };
           let user =
             switch (news.item.user) {
-            | Some(u) => " by " ++ u
+            | Some(u) => "by " ++ u
             | None => ""
             };
           let timeAgo = news.item.time_ago;
@@ -63,10 +65,24 @@ let make =
             <View style=AppStyle.listContent>
               <Text value=title style=AppStyle.title onPress=openUrl />
               <Text value=domain style=AppStyle.domain />
-              <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
+              <View style=AppStyle.inlineContainer>
+                <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
+                /* TODO: onPress */
+                <View style=AppStyle.commentContainer>
+                  <Text
+                    style=AppStyle.commentCount
+                    value=commentsCount
+                    onPress=navigateToComment
+                  />
+                  <Image
+                    style=AppStyle.commentImage
+                    source=commentImageSource
+                  />
+                </View>
+              </View>
             </View>
             <View style=AppStyle.listCommentAndFunc>
-              <Text value=commentsCount onPress=navigateToComment />
+              <Text value="..." />
             </View>
           </View>;
         });
