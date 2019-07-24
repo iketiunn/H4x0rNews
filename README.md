@@ -16,5 +16,6 @@
   - back event is not available on iOS
   - float back button one the bottom
   - Since back to top is not available due to ref api is not implement
-- [] Better comments page view
-  - Current combine Reddit seems great
+- [O] Better comments page view
+- [ ] List performance issue
+  - VirtualizedList: You have a large list that is slow to update

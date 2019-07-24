@@ -67,6 +67,7 @@ let commentCount = style([paddingLeft(Pt(3.0))]);
 module Comment = {
   let container = style([display(Flex), hackerNewsContentBackgroundColor]);
   let item = (level: int) => {
+    let marginTopVal = level == 0 ? 1.0 : 2.5;
     let borderColor =
       switch (level mod 7) {
       | 0 => "#ff5252"
@@ -82,7 +83,7 @@ module Comment = {
       borderLeftColor(String(borderColor)),
       borderLeftWidth(3.0),
       paddingLeft(Pt(5.0)),
-      marginTop(Pt(5.0)),
+      marginTop(Pt(marginTopVal)),
       hackerNewsContentBackgroundColor,
       /** For Android / iOS shadow */ elevation(2.0),
       shadowColor(String("#000000")),

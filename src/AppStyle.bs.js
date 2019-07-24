@@ -173,9 +173,11 @@ var container = Style$BsReactNative.style(/* :: */[
     ]);
 
 function item(level) {
-  var match = level % 7;
+  var match = level === 0;
+  var marginTopVal = match ? 1.0 : 2.5;
+  var match$1 = level % 7;
   var borderColor;
-  switch (match) {
+  switch (match$1) {
     case 0 : 
         borderColor = "#ff5252";
         break;
@@ -207,7 +209,7 @@ function item(level) {
                 /* :: */[
                   Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
                   /* :: */[
-                    Style$BsReactNative.marginTop(/* Pt */Block.__(0, [5.0])),
+                    Style$BsReactNative.marginTop(/* Pt */Block.__(0, [marginTopVal])),
                     /* :: */[
                       hackerNewsContentBackgroundColor,
                       /* :: */[
