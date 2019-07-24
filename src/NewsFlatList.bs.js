@@ -8,8 +8,10 @@ var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Image$BsReactNative = require("bs-react-native/src/components/image.js");
+var Share$BsReactNative = require("bs-react-native/src/share.js");
 var WebBrowser$ReasonExpo = require("reason-expo/src/WebBrowser.bs.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
+var TouchableOpacity$BsReactNative = require("bs-react-native/src/components/touchableOpacity.js");
 
 var component = ReasonReact.statelessComponent("NewsFlatList");
 
@@ -71,6 +73,17 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                   return /* () */0;
                                 }
                               };
+                              var promptShare = function (param) {
+                                var content_001 = news[/* item */0][/* title */1] + (": " + (news[/* item */0][/* url */8] + "\n"));
+                                var content = /* `text */[
+                                  -856044371,
+                                  content_001
+                                ];
+                                Share$BsReactNative.share(content, "Share Links", undefined, undefined, undefined, undefined, /* () */0).then((function (ret) {
+                                        return Promise.resolve(ret);
+                                      }));
+                                return /* () */0;
+                              };
                               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listItemContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                               ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listIndex), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listIndex), undefined, undefined, undefined, undefined, undefined, undefined, index, /* array */[])),
@@ -82,7 +95,7 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.timeAgoAndUser), undefined, undefined, undefined, undefined, undefined, undefined, timeAgoAndUser, /* array */[]))
                                                       ])),
                                               ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.commentAndShareContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                                        ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, shareButtonImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])),
+                                                        ReasonReact.element(undefined, undefined, TouchableOpacity$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, promptShare, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, shareButtonImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))])),
                                                         ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.commentContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                                                   ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, commentImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])),
                                                                   ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, navigateToComment, undefined, undefined, Js_primitive.some(AppStyle.commentCount), undefined, undefined, undefined, undefined, undefined, undefined, commentsCount, /* array */[]))

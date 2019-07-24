@@ -9,11 +9,9 @@
 
 ### TODO
 
-- [] Share article link or news link
-  - press the link or slide to right -> share buttons
-    - share article link
-    - share news link
-      - calls native share
+- [O] Share article button
+  - share article title + link
+  - calls native share
 - [O] Back to top
   - back event is not available on iOS
   - float back button one the bottom

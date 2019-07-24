@@ -1,4 +1,5 @@
 open BsReactNative;
+open Share;
 
 let component = ReasonReact.statelessComponent("NewsFlatList");
 let commentImageSource =
@@ -52,9 +53,19 @@ let make =
               navigation.push(Comments(title, news.item.id)) :
               /* Linking.openURL(news.item.url) |> ignore; */
               ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
+          /* Share event */
+          let promptShare = () => {
+            let content =
+              `text(news.item.title ++ ": " ++ news.item.url ++ "\n");
+            Js.Promise.(
+              share(~content, ~title="Share Links", ())
+              |> then_(ret => resolve(ret))
+              |> ignore
+            );
+          };
 
           /*
-            React Native Linking opening new borwser outside the app,
+            React Native Linking opening new browser outside the app,
             Expo handle it better, when close the opened url it's more smooth.
 
             let openUrl = () => Linking.openURL(news.item.url) |> ignore;
@@ -70,11 +81,12 @@ let make =
               <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
             </View>
             <View style=AppStyle.commentAndShareContainer>
-              <Image
-                style=AppStyle.commentImage
-                source=shareButtonImageSource
-              />
-              /* TODO: onPress */
+              <TouchableOpacity onPress=promptShare>
+                <Image
+                  style=AppStyle.commentImage
+                  source=shareButtonImageSource
+                />
+              </TouchableOpacity>
               <View style=AppStyle.commentContainer>
                 <Image style=AppStyle.commentImage source=commentImageSource />
                 <Text
