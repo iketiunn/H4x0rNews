@@ -20,6 +20,13 @@ var commentImageSource = /* `Required */[
   commentImageSource_001
 ];
 
+var shareButtonImageSource_001 = require("../assets/share-button.png");
+
+var shareButtonImageSource = /* `Required */[
+  202657151,
+  shareButtonImageSource_001
+];
+
 function make(data, refreshing, onRefresh, onEndReached, navigation, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
@@ -72,15 +79,15 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                               ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listContent), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, openUrl, undefined, undefined, Js_primitive.some(AppStyle.title), undefined, undefined, undefined, undefined, undefined, undefined, title, /* array */[])),
                                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.domain), undefined, undefined, undefined, undefined, undefined, undefined, domain, /* array */[])),
-                                                        ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.inlineContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                                                  ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.timeAgoAndUser), undefined, undefined, undefined, undefined, undefined, undefined, timeAgoAndUser, /* array */[])),
-                                                                  ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.commentContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                                                            ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, navigateToComment, undefined, undefined, Js_primitive.some(AppStyle.commentCount), undefined, undefined, undefined, undefined, undefined, undefined, commentsCount, /* array */[])),
-                                                                            ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, commentImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
-                                                                          ]))
-                                                                ]))
+                                                        ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.timeAgoAndUser), undefined, undefined, undefined, undefined, undefined, undefined, timeAgoAndUser, /* array */[]))
                                                       ])),
-                                              ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.listCommentAndFunc), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, "...", /* array */[]))]))
+                                              ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.commentAndShareContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                                        ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, shareButtonImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])),
+                                                        ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.commentContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                                                  ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, commentImageSource, Js_primitive.some(AppStyle.commentImage), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])),
+                                                                  ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, navigateToComment, undefined, undefined, Js_primitive.some(AppStyle.commentCount), undefined, undefined, undefined, undefined, undefined, undefined, commentsCount, /* array */[]))
+                                                                ]))
+                                                      ]))
                                             ]));
                             }), param);
               };
@@ -103,5 +110,6 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
 
 exports.component = component;
 exports.commentImageSource = commentImageSource;
+exports.shareButtonImageSource = shareButtonImageSource;
 exports.make = make;
 /* component Not a pure module */

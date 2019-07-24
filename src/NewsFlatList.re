@@ -3,6 +3,8 @@ open BsReactNative;
 let component = ReasonReact.statelessComponent("NewsFlatList");
 let commentImageSource =
   `Required(Packager.require("../assets/comment.png"));
+let shareButtonImageSource =
+  `Required(Packager.require("../assets/share-button.png"));
 let make =
     (
       ~data,
@@ -65,24 +67,22 @@ let make =
             <View style=AppStyle.listContent>
               <Text value=title style=AppStyle.title onPress=openUrl />
               <Text value=domain style=AppStyle.domain />
-              <View style=AppStyle.inlineContainer>
-                <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
-                /* TODO: onPress */
-                <View style=AppStyle.commentContainer>
-                  <Text
-                    style=AppStyle.commentCount
-                    value=commentsCount
-                    onPress=navigateToComment
-                  />
-                  <Image
-                    style=AppStyle.commentImage
-                    source=commentImageSource
-                  />
-                </View>
-              </View>
+              <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
             </View>
-            <View style=AppStyle.listCommentAndFunc>
-              <Text value="..." />
+            <View style=AppStyle.commentAndShareContainer>
+              <Image
+                style=AppStyle.commentImage
+                source=shareButtonImageSource
+              />
+              /* TODO: onPress */
+              <View style=AppStyle.commentContainer>
+                <Image style=AppStyle.commentImage source=commentImageSource />
+                <Text
+                  style=AppStyle.commentCount
+                  value=commentsCount
+                  onPress=navigateToComment
+                />
+              </View>
             </View>
           </View>;
         });

@@ -92,7 +92,7 @@ var listIndex = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listContent = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.8),
+      Style$BsReactNative.flex(0.760),
       /* :: */[
         Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
         /* :: */[
@@ -118,22 +118,25 @@ var domain = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var inlineContainer = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.display(/* Flex */0),
-      /* :: */[
-        Style$BsReactNative.flexDirection(/* Row */0),
-        /* :: */[
-          Style$BsReactNative.justifyContent(/* SpaceBetween */5),
-          /* [] */0
-        ]
-      ]
-    ]);
-
 var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.display(/* Flex */0),
       /* :: */[
         grayColor,
         /* [] */0
+      ]
+    ]);
+
+var commentAndShareContainer = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.flex(0.115),
+      /* :: */[
+        Style$BsReactNative.display(/* Flex */0),
+        /* :: */[
+          Style$BsReactNative.flexDirection(/* Column */2),
+          /* :: */[
+            Style$BsReactNative.justifyContent(/* SpaceAround */4),
+            /* [] */0
+          ]
+        ]
       ]
     ]);
 
@@ -157,12 +160,7 @@ var commentImage = Style$BsReactNative.style(/* :: */[
     ]);
 
 var commentCount = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.paddingRight(/* Pt */Block.__(0, [3.0])),
-      /* [] */0
-    ]);
-
-var listCommentAndFunc = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.075),
+      Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [3.0])),
       /* [] */0
     ]);
 
@@ -260,12 +258,11 @@ exports.listIndex = listIndex;
 exports.listContent = listContent;
 exports.title = title;
 exports.domain = domain;
-exports.inlineContainer = inlineContainer;
 exports.timeAgoAndUser = timeAgoAndUser;
+exports.commentAndShareContainer = commentAndShareContainer;
 exports.commentContainer = commentContainer;
 exports.commentImage = commentImage;
 exports.commentCount = commentCount;
-exports.listCommentAndFunc = listCommentAndFunc;
 exports.Comment = Comment;
 exports.CommentsPage = CommentsPage;
 /* hackerNewsHeaderBackgroundColor Not a pure module */

@@ -47,17 +47,21 @@ let listItemContainer =
   style([display(Flex), flexWrap(Nowrap), flexDirection(Row)]);
 let listIndex = style([flex(0.125), alignSelf(Center)]);
 let listContent =
-  style([flex(0.8), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
+  style([flex(0.760), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
 let title = style([paddingTop(Pt(5.0)), fontWeight(`Bold)]);
 let domain = style([fontStyle(Italic), grayColor]);
-let inlineContainer =
-  style([display(Flex), flexDirection(Row), justifyContent(SpaceBetween)]);
 let timeAgoAndUser = style([display(Flex), grayColor]);
+let commentAndShareContainer =
+  style([
+    flex(0.115),
+    display(Flex),
+    flexDirection(Column),
+    justifyContent(SpaceAround),
+  ]);
 let commentContainer =
   style([display(Flex), flexDirection(Row), alignItems(Center)]);
 let commentImage = style([width(Pt(15.0)), height(Pt(15.0))]);
-let commentCount = style([paddingRight(Pt(3.0))]);
-let listCommentAndFunc = style([flex(0.075)]);
+let commentCount = style([paddingLeft(Pt(3.0))]);
 
 /** Comments page */;
 module Comment = {
