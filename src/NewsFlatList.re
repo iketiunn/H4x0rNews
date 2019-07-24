@@ -87,14 +87,15 @@ let make =
                   source=shareButtonImageSource
                 />
               </TouchableOpacity>
-              <View style=AppStyle.commentContainer>
-                <Image style=AppStyle.commentImage source=commentImageSource />
-                <Text
-                  style=AppStyle.commentCount
-                  value=commentsCount
-                  onPress=navigateToComment
-                />
-              </View>
+              <TouchableOpacity onPress=navigateToComment>
+                <View style=AppStyle.commentContainer>
+                  <Image
+                    style=AppStyle.commentImage
+                    source=commentImageSource
+                  />
+                  <Text style=AppStyle.commentCount value=commentsCount />
+                </View>
+              </TouchableOpacity>
             </View>
           </View>;
         });
