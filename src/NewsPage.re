@@ -21,8 +21,14 @@ let make = (~navigation: Config.navigationProp, _children) => {
       );
       send(Loading);
     };
-  /* let setNewsFlatListRef = (listRef, {ReasonReact.state, send}) =>
-     self.send(SetNewsFlatListRef(listRef)); */
+  let reload = ({ReasonReact.state: _state, send}) => {
+    send(Init);
+    Js.Promise.(
+      Data.fetchNewList(~id=string_of_int(1), ())
+      |> then_(newsList => resolve(send(Loaded((1, newsList)))))
+      |> ignore
+    );
+  };
   let init = () => {newsList: [], page: 0, isLoading: false};
   {
     ...component,
@@ -45,24 +51,12 @@ let make = (~navigation: Config.navigationProp, _children) => {
           <NewsFlatList
             data={Array.of_list(self.state.newsList)}
             refreshing={self.state.isLoading}
-            onRefresh={
-              _ => {
-                self.send(Init);
-                loadNews(self);
-              }
-            }
+            onRefresh={_ => reload(self)}
             onEndReached={_ => loadNews(self)}
             navigation
           />
           /*** Since back to top is not available due to ref api is not implement */
-          <BackToTopButton
-            onPress={
-              _ => {
-                self.send(Init);
-                loadNews(self);
-              }
-            }
-          />
+          <BackToTopButton onPress={_ => reload(self)} />
         </View>
       </SafeAreaView>,
   };

@@ -33,6 +33,17 @@ function make(navigation, _children) {
       return 0;
     }
   };
+  var reload = function (param) {
+    var send = param[/* send */3];
+    Curry._1(send, /* Init */0);
+    Data.fetchNewList(String(1), /* () */0).then((function (newsList) {
+            return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
+                              1,
+                              newsList
+                            ]]));
+          }));
+    return /* () */0;
+  };
   var init = function (param) {
     return /* record */[
             /* newsList : [] */0,
@@ -74,14 +85,12 @@ function make(navigation, _children) {
                               undefined,
                               /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                           ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), self[/* state */1][/* isLoading */2], (function (param) {
-                                                      Curry._1(self[/* send */3], /* Init */0);
-                                                      return loadNews(self);
+                                                      return reload(self);
                                                     }), (function (param) {
                                                       return loadNews(self);
                                                     }), navigation, /* array */[])),
                                           ReasonReact.element(undefined, undefined, BackToTopButton.make((function (param) {
-                                                      Curry._1(self[/* send */3], /* Init */0);
-                                                      return loadNews(self);
+                                                      return reload(self);
                                                     }), /* array */[]))
                                         ]))]
                             ]));
