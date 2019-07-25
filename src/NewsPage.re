@@ -1,13 +1,13 @@
 open BsReactNative;
 
 type state = {
-  newsList: Data.newsList,
+  newsList: list(Data.news),
   page: int,
   isLoading: bool,
 };
 type action =
   | Init
-  | Loaded((int, Data.newsList))
+  | Loaded((int, list(Data.news)))
   | Loading;
 let component = ReasonReact.reducerComponent("App");
 let make = (~navigation: Config.navigationProp, _children) => {

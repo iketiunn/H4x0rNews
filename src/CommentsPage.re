@@ -34,7 +34,13 @@ let make = (~storyId: int, _children) => {
         <View style=AppStyle.news>
           {
             switch (self.state.story) {
-            | Some(story) => <CommentsFlatList data={story.comments} />
+            | Some(story) =>
+              let comments =
+                switch (story.content) {
+                | Some(_content) => [Data.transStoryToComment(story)]
+                | None => story.comments
+                };
+              <CommentsFlatList data=comments />;
             | None =>
               <View>
                 {

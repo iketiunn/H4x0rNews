@@ -10,7 +10,6 @@ type news = {
   url: string,
   domain: option(string),
 };
-type newsList = list(news);
 type comment = {
   id: int,
   level: int,
@@ -30,8 +29,27 @@ type story = {
   type_: string,
   url: string,
   domain: option(string),
+  content: option(string),
   comments: list(comment),
 };
+
+let transStoryToComment = s => {
+  let content =
+    switch (s.content) {
+    | Some(c) => c
+    | None => ""
+    };
+  {
+    id: s.id,
+    level: 0,
+    user: s.user,
+    time: s.time,
+    time_ago: s.time_ago,
+    content,
+    comments: s.comments,
+  };
+};
+
 module Decode = {
   let news = json: news =>
     Json.Decode.{
@@ -70,6 +88,7 @@ module Decode = {
       type_: json |> field("type", string),
       url: json |> field("url", string),
       domain: json |> optional(field("domain", string)),
+      content: json |> optional(field("content", string)),
       comments: json |> field("comments", list(comment)),
     };
 };

@@ -3,6 +3,20 @@
 
 var Json_decode = require("@glennsl/bs-json/src/Json_decode.bs.js");
 
+function transStoryToComment(s) {
+  var match = s[/* content */9];
+  var content = match !== undefined ? match : "";
+  return /* record */[
+          /* id */s[/* id */0],
+          /* level */0,
+          /* user */s[/* user */3],
+          /* time */s[/* time */4],
+          /* time_ago */s[/* time_ago */5],
+          /* content */content,
+          /* comments */s[/* comments */10]
+        ];
+}
+
 function news(json) {
   return /* record */[
           /* id */Json_decode.field("id", Json_decode.$$int, json),
@@ -61,6 +75,9 @@ function story(json) {
           /* domain */Json_decode.optional((function (param) {
                   return Json_decode.field("domain", Json_decode.string, param);
                 }), json),
+          /* content */Json_decode.optional((function (param) {
+                  return Json_decode.field("content", Json_decode.string, param);
+                }), json),
           /* comments */Json_decode.field("comments", (function (param) {
                   return Json_decode.list(comment, param);
                 }), json)
@@ -93,6 +110,7 @@ function fetchStory(id) {
               }));
 }
 
+exports.transStoryToComment = transStoryToComment;
 exports.Decode = Decode;
 exports.domain = domain;
 exports.fetchNewList = fetchNewList;

@@ -38,6 +38,18 @@ function make(storyId, _children) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (self) {
               var match = self[/* state */1][/* story */0];
+              var tmp;
+              if (match !== undefined) {
+                var story = match;
+                var match$1 = story[/* content */9];
+                var comments = match$1 !== undefined ? /* :: */[
+                    Data.transStoryToComment(story),
+                    /* [] */0
+                  ] : story[/* comments */10];
+                tmp = ReasonReact.element(undefined, undefined, CommentsFlatList.make(comments, /* array */[]));
+              } else {
+                tmp = ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[self[/* state */1][/* isLoading */1] ? ReasonReact.element(undefined, undefined, ActivityIndicator$BsReactNative.make(undefined, undefined, /* large */-272944197, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.activityIndicator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]));
+              }
               return ReasonReact.element(undefined, undefined, Curry.app(SafeAreaView$BsReactNative.make, [
                               undefined,
                               undefined,
@@ -59,7 +71,7 @@ function make(storyId, _children) {
                               undefined,
                               undefined,
                               undefined,
-                              /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[match !== undefined ? ReasonReact.element(undefined, undefined, CommentsFlatList.make(match[/* comments */9], /* array */[])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[self[/* state */1][/* isLoading */1] ? ReasonReact.element(undefined, undefined, ActivityIndicator$BsReactNative.make(undefined, undefined, /* large */-272944197, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.activityIndicator), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]))]))]
+                              /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[tmp]))]
                             ]));
             }),
           /* initialState */(function (param) {
