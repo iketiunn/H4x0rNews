@@ -74,7 +74,9 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                 }
                               };
                               var promptShare = function (param) {
-                                var content_001 = news[/* item */0][/* title */1] + (": " + (news[/* item */0][/* url */8] + "\n"));
+                                var result = news[/* item */0][/* url */8].startsWith("http");
+                                var url = result ? news[/* item */0][/* url */8] : "https://news.ycombinator.com/" + news[/* item */0][/* url */8];
+                                var content_001 = news[/* item */0][/* title */1] + (": " + (url + "\n"));
                                 var content = /* `text */[
                                   -856044371,
                                   content_001

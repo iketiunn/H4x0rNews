@@ -55,8 +55,17 @@ let make =
               ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
           /* Share event */
           let promptShare = () => {
-            let content =
-              `text(news.item.title ++ ": " ++ news.item.url ++ "\n");
+            /** Trans original HN post into valid url */
+            let url =
+              news.item.url
+              |> Js.String.startsWith("http")
+              |> (
+                result =>
+                  result ?
+                    news.item.url :
+                    "https://news.ycombinator.com/" ++ news.item.url
+              );
+            let content = `text(news.item.title ++ ": " ++ url ++ "\n");
             Js.Promise.(
               share(~content, ~title="Share Links", ())
               |> then_(ret => resolve(ret))
