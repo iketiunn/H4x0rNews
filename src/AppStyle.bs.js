@@ -92,7 +92,7 @@ var listIndex = Style$BsReactNative.style(/* :: */[
     ]);
 
 var listContent = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.760),
+      Style$BsReactNative.flex(0.740),
       /* :: */[
         Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [5.0])),
         /* :: */[
@@ -118,22 +118,30 @@ var domain = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
+var timeAgoAndUserAndLinkContainer = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.display(/* Flex */0),
       /* :: */[
-        grayColor,
-        /* [] */0
+        Style$BsReactNative.flexDirection(/* Row */0),
+        /* :: */[
+          Style$BsReactNative.justifyContent(/* SpaceBetween */5),
+          /* [] */0
+        ]
       ]
     ]);
 
+var timeAgoAndUser = Style$BsReactNative.style(/* :: */[
+      grayColor,
+      /* [] */0
+    ]);
+
 var commentAndShareContainer = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.flex(0.115),
+      Style$BsReactNative.flex(0.135),
       /* :: */[
         Style$BsReactNative.display(/* Flex */0),
         /* :: */[
           Style$BsReactNative.flexDirection(/* Column */2),
           /* :: */[
-            Style$BsReactNative.justifyContent(/* SpaceAround */4),
+            Style$BsReactNative.justifyContent(/* SpaceBetween */5),
             /* [] */0
           ]
         ]
@@ -151,12 +159,28 @@ var commentContainer = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var commentImage = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.width(/* Pt */Block.__(0, [15.0])),
-      /* :: */[
-        Style$BsReactNative.height(/* Pt */Block.__(0, [15.0])),
-        /* [] */0
-      ]
+var imageSize_000 = Style$BsReactNative.width(/* Pt */Block.__(0, [20.0]));
+
+var imageSize_001 = /* :: */[
+  Style$BsReactNative.height(/* Pt */Block.__(0, [20.0])),
+  /* [] */0
+];
+
+var imageSize = /* :: */[
+  imageSize_000,
+  imageSize_001
+];
+
+var image = Style$BsReactNative.style(imageSize);
+
+var linkImage = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.marginRight(/* Pt */Block.__(0, [5.0])),
+      imageSize
+    ]);
+
+var shareImage = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.marginTop(/* Pt */Block.__(0, [12.0])),
+      imageSize
     ]);
 
 var commentCount = Style$BsReactNative.style(/* :: */[
@@ -179,7 +203,7 @@ function item(level) {
   var borderColor;
   switch (match$1) {
     case 0 : 
-        borderColor = "#ff5252";
+        borderColor = "#41cfea";
         break;
     case 1 : 
         borderColor = "#34ace0";
@@ -260,10 +284,14 @@ exports.listIndex = listIndex;
 exports.listContent = listContent;
 exports.title = title;
 exports.domain = domain;
+exports.timeAgoAndUserAndLinkContainer = timeAgoAndUserAndLinkContainer;
 exports.timeAgoAndUser = timeAgoAndUser;
 exports.commentAndShareContainer = commentAndShareContainer;
 exports.commentContainer = commentContainer;
-exports.commentImage = commentImage;
+exports.imageSize = imageSize;
+exports.image = image;
+exports.linkImage = linkImage;
+exports.shareImage = shareImage;
 exports.commentCount = commentCount;
 exports.Comment = Comment;
 exports.CommentsPage = CommentsPage;

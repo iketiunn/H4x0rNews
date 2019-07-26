@@ -4,8 +4,9 @@ open Share;
 let component = ReasonReact.statelessComponent("NewsFlatList");
 let commentImageSource =
   `Required(Packager.require("../assets/comment.png"));
-let shareButtonImageSource =
+let shareImageSource =
   `Required(Packager.require("../assets/share-button.png"));
+let linkImageSource = `Required(Packager.require("../assets/link.png"));
 let make =
     (
       ~data,
@@ -54,7 +55,19 @@ let make =
               /* Linking.openURL(news.item.url) |> ignore; */
               ReasonExpo.WebBrowser.openBrowserAsync(news.item.url) |> ignore;
           /* Share event */
-          let promptShare = () => {
+          let sharePostLink = () => {
+            /** Get the HN post url */
+            let url =
+              "https://news.ycombinator.com/item?id="
+              ++ string_of_int(news.item.id);
+            let content = `text(news.item.title ++ ": " ++ url ++ "\n");
+            Js.Promise.(
+              share(~content, ~title="Share Links", ())
+              |> then_(ret => resolve(ret))
+              |> ignore
+            );
+          };
+          let shareArticleLink = () => {
             /** Trans original HN post into valid url */
             let url =
               news.item.url
@@ -67,7 +80,13 @@ let make =
               );
             let content = `text(news.item.title ++ ": " ++ url ++ "\n");
             Js.Promise.(
-              share(~content, ~title="Share Links", ())
+              share(
+                ~content,
+                ~title="Share Links",
+                ~subject="Share it",
+                ~dialogTitle="Share!",
+                (),
+              )
               |> then_(ret => resolve(ret))
               |> ignore
             );
@@ -87,21 +106,21 @@ let make =
             <View style=AppStyle.listContent>
               <Text value=title style=AppStyle.title onPress=openUrl />
               <Text value=domain style=AppStyle.domain />
-              <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
+              /***  */
+              <View style=AppStyle.timeAgoAndUserAndLinkContainer>
+                <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
+                <TouchableOpacity onPress=shareArticleLink>
+                  <Image style=AppStyle.linkImage source=linkImageSource />
+                </TouchableOpacity>
+              </View>
             </View>
             <View style=AppStyle.commentAndShareContainer>
-              <TouchableOpacity onPress=promptShare>
-                <Image
-                  style=AppStyle.commentImage
-                  source=shareButtonImageSource
-                />
+              <TouchableOpacity onPress=sharePostLink>
+                <Image style=AppStyle.shareImage source=shareImageSource />
               </TouchableOpacity>
               <TouchableOpacity onPress=navigateToComment>
                 <View style=AppStyle.commentContainer>
-                  <Image
-                    style=AppStyle.commentImage
-                    source=commentImageSource
-                  />
+                  <Image style=AppStyle.image source=commentImageSource />
                   <Text style=AppStyle.commentCount value=commentsCount />
                 </View>
               </TouchableOpacity>

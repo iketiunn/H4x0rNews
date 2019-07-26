@@ -47,20 +47,27 @@ let listItemContainer =
   style([display(Flex), flexWrap(Nowrap), flexDirection(Row)]);
 let listIndex = style([flex(0.125), alignSelf(Center)]);
 let listContent =
-  style([flex(0.760), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
+  style([flex(0.740), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
 let title = style([paddingTop(Pt(5.0)), fontWeight(`Bold)]);
 let domain = style([fontStyle(Italic), grayColor]);
-let timeAgoAndUser = style([display(Flex), grayColor]);
+
+let timeAgoAndUserAndLinkContainer =
+  style([display(Flex), flexDirection(Row), justifyContent(SpaceBetween)]);
+
+let timeAgoAndUser = style([grayColor]);
 let commentAndShareContainer =
   style([
-    flex(0.115),
+    flex(0.135),
     display(Flex),
     flexDirection(Column),
-    justifyContent(SpaceAround),
+    justifyContent(SpaceBetween),
   ]);
 let commentContainer =
   style([display(Flex), flexDirection(Row), alignItems(Center)]);
-let commentImage = style([width(Pt(15.0)), height(Pt(15.0))]);
+let imageSize = [width(Pt(20.0)), height(Pt(20.0))];
+let image = style(imageSize);
+let linkImage = style([marginRight(Pt(5.0)), ...imageSize]);
+let shareImage = style([marginTop(Pt(12.0)), ...imageSize]);
 let commentCount = style([paddingLeft(Pt(3.0))]);
 
 /** Comments page */;
@@ -70,7 +77,7 @@ module Comment = {
     let marginTopVal = level == 0 ? 1.0 : 2.5;
     let borderColor =
       switch (level mod 7) {
-      | 0 => "#ff5252"
+      | 0 => "#41cfea"
       | 1 => "#34ace0"
       | 2 => "#33d9b2"
       | 3 => "#ffda79"
