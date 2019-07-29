@@ -64,7 +64,8 @@ let commentAndShareContainer =
   ]);
 let commentContainer =
   style([display(Flex), flexDirection(Row), alignItems(Center)]);
-let imageSize = [width(Pt(20.0)), height(Pt(20.0))];
+let imageHW = Pt(17.5);
+let imageSize = [width(imageHW), height(imageHW)];
 let image = style(imageSize);
 let linkImage = style([marginRight(Pt(5.0)), ...imageSize]);
 let shareImage = style([marginTop(Pt(12.0)), ...imageSize]);

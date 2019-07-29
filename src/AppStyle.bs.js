@@ -159,10 +159,12 @@ var commentContainer = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var imageSize_000 = Style$BsReactNative.width(/* Pt */Block.__(0, [20.0]));
+var imageHW = /* Pt */Block.__(0, [17.5]);
+
+var imageSize_000 = Style$BsReactNative.width(imageHW);
 
 var imageSize_001 = /* :: */[
-  Style$BsReactNative.height(/* Pt */Block.__(0, [20.0])),
+  Style$BsReactNative.height(imageHW),
   /* [] */0
 ];
 
@@ -288,6 +290,7 @@ exports.timeAgoAndUserAndLinkContainer = timeAgoAndUserAndLinkContainer;
 exports.timeAgoAndUser = timeAgoAndUser;
 exports.commentAndShareContainer = commentAndShareContainer;
 exports.commentContainer = commentContainer;
+exports.imageHW = imageHW;
 exports.imageSize = imageSize;
 exports.image = image;
 exports.linkImage = linkImage;

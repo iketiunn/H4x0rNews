@@ -9,20 +9,44 @@ var Style$BsReactNative = require("bs-react-native/src/style.js");
 var TouchableOpacity$BsReactNative = require("bs-react-native/src/components/touchableOpacity.js");
 
 var fab = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["transparent"])),
+      Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F7F5F8"])),
       /* :: */[
-        Style$BsReactNative.marginLeft(/* Auto */0),
+        Style$BsReactNative.borderStyle(/* Solid */0),
         /* :: */[
-          Style$BsReactNative.marginRight(/* Pt */Block.__(0, [15.0])),
+          Style$BsReactNative.borderColor(/* String */Block.__(0, ["black"])),
           /* :: */[
-            Style$BsReactNative.elevation(8.0),
+            Style$BsReactNative.width(/* Pt */Block.__(0, [40.0])),
             /* :: */[
-              Style$BsReactNative.position(/* Absolute */0),
+              Style$BsReactNative.height(/* Pt */Block.__(0, [40.0])),
               /* :: */[
-                Style$BsReactNative.bottom(/* Pt */Block.__(0, [0.0])),
+                Style$BsReactNative.borderRadius(100.0),
                 /* :: */[
-                  Style$BsReactNative.right(/* Pt */Block.__(0, [15.0])),
-                  /* [] */0
+                  Style$BsReactNative.elevation(8.0),
+                  /* :: */[
+                    Style$BsReactNative.position(/* Absolute */0),
+                    /* :: */[
+                      Style$BsReactNative.bottom(/* Pt */Block.__(0, [2.0])),
+                      /* :: */[
+                        Style$BsReactNative.right(/* Pt */Block.__(0, [20.0])),
+                        /* :: */[
+                          Style$BsReactNative.elevation(2.0),
+                          /* :: */[
+                            Style$BsReactNative.shadowColor(/* String */Block.__(0, ["#000000"])),
+                            /* :: */[
+                              Style$BsReactNative.shadowOpacity(0.4),
+                              /* :: */[
+                                Style$BsReactNative.shadowRadius(1.0),
+                                /* :: */[
+                                  Style$BsReactNative.shadowOffset(1.0, 0.0),
+                                  /* [] */0
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
                 ]
               ]
             ]
@@ -32,12 +56,15 @@ var fab = Style$BsReactNative.style(/* :: */[
     ]);
 
 var arrow = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.fontSize(/* Float */Block.__(0, [45.0])),
+      Style$BsReactNative.marginLeft(/* Pt */Block.__(0, [12.0])),
       /* :: */[
-        Style$BsReactNative.color(/* String */Block.__(0, ["black"])),
+        Style$BsReactNative.fontSize(/* Float */Block.__(0, [45.0])),
         /* :: */[
-          Style$BsReactNative.Transform[/* make */0](undefined, undefined, undefined, undefined, undefined, 1.25, undefined, undefined, undefined, undefined, undefined, /* () */0),
-          /* [] */0
+          Style$BsReactNative.color(/* String */Block.__(0, ["black"])),
+          /* :: */[
+            Style$BsReactNative.Transform[/* make */0](undefined, undefined, undefined, undefined, undefined, 1.25, undefined, undefined, undefined, undefined, undefined, /* () */0),
+            /* [] */0
+          ]
         ]
       ]
     ]);
