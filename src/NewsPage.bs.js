@@ -11,8 +11,26 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var NewsFlatList = require("./NewsFlatList.bs.js");
 var BackToTopButton = require("./BackToTopButton.bs.js");
+var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
+var Caml_builtin_exceptions = require("bs-platform/lib/js/caml_builtin_exceptions.js");
 var SafeAreaView$BsReactNative = require("bs-react-native/src/components/safeAreaView.js");
+
+function failAfter(t) {
+  return new Promise((function (resolve, reject) {
+                setTimeout((function (param) {
+                        return reject(Caml_builtin_exceptions.not_found);
+                      }), t);
+                return /* () */0;
+              }));
+}
+
+function withTimeout(prom, t) {
+  return Promise.race(/* array */[
+              prom,
+              failAfter(t)
+            ]);
+}
 
 var component = ReasonReact.reducerComponent("App");
 
@@ -22,11 +40,13 @@ function make(navigation, _children) {
     if (state[/* page */1] < 10 && !state[/* isLoading */2]) {
       var send = param[/* send */3];
       var newPage = state[/* page */1] + 1 | 0;
-      Data.fetchNewList(String(newPage), /* () */0).then((function (newsList) {
-              return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
-                                newPage,
-                                newsList
-                              ]]));
+      withTimeout(Data.fetchNewList(String(newPage), /* () */0), 30000).then((function (newsList) {
+                return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
+                                  newPage,
+                                  newsList
+                                ]]));
+              })).catch((function (_err) {
+              return Promise.resolve(Curry._1(send, /* Timeout */2));
             }));
       return Curry._1(send, /* Loading */1);
     } else {
@@ -36,11 +56,13 @@ function make(navigation, _children) {
   var reload = function (param) {
     var send = param[/* send */3];
     Curry._1(send, /* Init */0);
-    Data.fetchNewList(String(1), /* () */0).then((function (newsList) {
-            return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
-                              1,
-                              newsList
-                            ]]));
+    withTimeout(Data.fetchNewList(String(1), /* () */0), 30000).then((function (newsList) {
+              return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
+                                1,
+                                newsList
+                              ]]));
+            })).catch((function (_err) {
+            return Promise.resolve(Curry._1(send, /* Timeout */2));
           }));
     return /* () */0;
   };
@@ -48,7 +70,8 @@ function make(navigation, _children) {
     return /* record */[
             /* newsList : [] */0,
             /* page */0,
-            /* isLoading */false
+            /* isLoading */false,
+            /* timeout */false
           ];
   };
   return /* record */[
@@ -83,41 +106,60 @@ function make(navigation, _children) {
                               undefined,
                               undefined,
                               undefined,
-                              /* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                                          ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), self[/* state */1][/* isLoading */2], (function (param) {
-                                                      return reload(self);
-                                                    }), (function (param) {
-                                                      return loadNews(self);
-                                                    }), navigation, /* array */[])),
-                                          ReasonReact.element(undefined, undefined, BackToTopButton.make((function (param) {
-                                                      return reload(self);
-                                                    }), /* array */[]))
-                                        ]))]
+                              /* array */[self[/* state */1][/* timeout */3] ? ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                            ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, (function (param) {
+                                                        return reload(self);
+                                                      }), undefined, undefined, Js_primitive.some(AppStyle.Common[/* textCenter */1]), undefined, undefined, undefined, undefined, undefined, undefined, "Timeout...Tap Back-To-Top Button to reload", /* array */[])),
+                                            ReasonReact.element(undefined, undefined, BackToTopButton.make((function (param) {
+                                                        return reload(self);
+                                                      }), /* array */[]))
+                                          ])) : ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(AppStyle.news), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                                            ReasonReact.element(undefined, undefined, NewsFlatList.make($$Array.of_list(self[/* state */1][/* newsList */0]), self[/* state */1][/* isLoading */2], (function (param) {
+                                                        return reload(self);
+                                                      }), (function (param) {
+                                                        return loadNews(self);
+                                                      }), navigation, /* array */[])),
+                                            ReasonReact.element(undefined, undefined, BackToTopButton.make((function (param) {
+                                                        return reload(self);
+                                                      }), /* array */[]))
+                                          ]))]
                             ]));
             }),
           /* initialState */init,
           /* retainedProps */component[/* retainedProps */11],
           /* reducer */(function (action, state) {
               if (typeof action === "number") {
-                if (action !== 0) {
-                  return /* Update */Block.__(0, [/* record */[
-                              /* newsList */state[/* newsList */0],
-                              /* page */state[/* page */1],
-                              /* isLoading */true
-                            ]]);
-                } else {
-                  return /* Update */Block.__(0, [/* record */[
-                              /* newsList : [] */0,
-                              /* page */0,
-                              /* isLoading */false
-                            ]]);
+                switch (action) {
+                  case 0 : 
+                      return /* Update */Block.__(0, [/* record */[
+                                  /* newsList : [] */0,
+                                  /* page */0,
+                                  /* isLoading */false,
+                                  /* timeout */false
+                                ]]);
+                  case 1 : 
+                      return /* Update */Block.__(0, [/* record */[
+                                  /* newsList */state[/* newsList */0],
+                                  /* page */state[/* page */1],
+                                  /* isLoading */true,
+                                  /* timeout */state[/* timeout */3]
+                                ]]);
+                  case 2 : 
+                      return /* Update */Block.__(0, [/* record */[
+                                  /* newsList */state[/* newsList */0],
+                                  /* page */state[/* page */1],
+                                  /* isLoading */state[/* isLoading */2],
+                                  /* timeout */true
+                                ]]);
+                  
                 }
               } else {
                 var match = action[0];
                 return /* Update */Block.__(0, [/* record */[
                             /* newsList */List.append(state[/* newsList */0], match[1]),
                             /* page */match[0],
-                            /* isLoading */false
+                            /* isLoading */false,
+                            /* timeout */false
                           ]]);
               }
             }),
@@ -125,6 +167,8 @@ function make(navigation, _children) {
         ];
 }
 
+exports.failAfter = failAfter;
+exports.withTimeout = withTimeout;
 exports.component = component;
 exports.make = make;
 /* component Not a pure module */

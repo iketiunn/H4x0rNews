@@ -10,19 +10,7 @@ let activityIndicator = style([hackerNewsContentBackgroundColor]);
  * Using it to handle notch
  */
 let pageContainer =
-  style([
-    flex(1.0),
-    hackerNewsHeaderBackgroundColor,
-    overflow(Hidden),
-    /*
-     paddingTop(
-       Pt(
-         Platform.os() == Platform.Android ?
-           float_of_int(ReasonExpo.Constants.statusBarHeight) : 0.0,
-       ),
-     ),
-     */
-  ]);
+  style([flex(1.0), hackerNewsHeaderBackgroundColor, overflow(Hidden)]);
 
 /** Common */
 module Common = {
