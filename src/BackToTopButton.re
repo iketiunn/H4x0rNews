@@ -1,5 +1,7 @@
 /* Hide it when scrolling down` */
 open BsReactNative;
+let refreshImageSource =
+  `Required(Packager.require("../assets/refresh.png"));
 module Style = {
   open Style;
   let fab =
@@ -11,22 +13,16 @@ module Style = {
       width(Pt(40.0)),
       height(Pt(40.0)),
       borderRadius(100.0),
-      elevation(8.0),
       position(Absolute),
-      bottom(Pt(2.0)),
+      bottom(Pt(5.0)),
       right(Pt(20.0)),
+      alignItems(Center),
+      justifyContent(Center),
       /** For Android / iOS shadow */ elevation(2.0),
       shadowColor(String("#000000")),
       shadowOpacity(0.4),
       shadowRadius(1.0),
       shadowOffset(~height=1.0, ~width=0.0),
-    ]);
-  let arrow =
-    style([
-      marginLeft(Pt(12.0)),
-      fontSize(Float(45.0)),
-      color(String("black")),
-      Transform.make(~scaleX=1.25, ()),
     ]);
 };
 
@@ -36,6 +32,6 @@ let make = (~onPress, _children) => {
   ...component,
   render: _self =>
     <TouchableOpacity onPress style=Style.fab>
-      <Text style=Style.arrow value="^" />
+      <Image style=AppStyle.image source=refreshImageSource />
     </TouchableOpacity>,
 };

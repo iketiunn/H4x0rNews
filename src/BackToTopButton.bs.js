@@ -2,11 +2,19 @@
 'use strict';
 
 var Block = require("bs-platform/lib/js/block.js");
+var AppStyle = require("./AppStyle.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
-var Text$BsReactNative = require("bs-react-native/src/components/text.js");
+var Image$BsReactNative = require("bs-react-native/src/components/image.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
 var TouchableOpacity$BsReactNative = require("bs-react-native/src/components/touchableOpacity.js");
+
+var refreshImageSource_001 = require("../assets/refresh.png");
+
+var refreshImageSource = /* `Required */[
+  202657151,
+  refreshImageSource_001
+];
 
 var fab = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F7F5F8"])),
@@ -21,24 +29,27 @@ var fab = Style$BsReactNative.style(/* :: */[
               /* :: */[
                 Style$BsReactNative.borderRadius(100.0),
                 /* :: */[
-                  Style$BsReactNative.elevation(8.0),
+                  Style$BsReactNative.position(/* Absolute */0),
                   /* :: */[
-                    Style$BsReactNative.position(/* Absolute */0),
+                    Style$BsReactNative.bottom(/* Pt */Block.__(0, [5.0])),
                     /* :: */[
-                      Style$BsReactNative.bottom(/* Pt */Block.__(0, [2.0])),
+                      Style$BsReactNative.right(/* Pt */Block.__(0, [20.0])),
                       /* :: */[
-                        Style$BsReactNative.right(/* Pt */Block.__(0, [20.0])),
+                        Style$BsReactNative.alignItems(/* Center */2),
                         /* :: */[
-                          Style$BsReactNative.elevation(2.0),
+                          Style$BsReactNative.justifyContent(/* Center */2),
                           /* :: */[
-                            Style$BsReactNative.shadowColor(/* String */Block.__(0, ["#000000"])),
+                            Style$BsReactNative.elevation(2.0),
                             /* :: */[
-                              Style$BsReactNative.shadowOpacity(0.4),
+                              Style$BsReactNative.shadowColor(/* String */Block.__(0, ["#000000"])),
                               /* :: */[
-                                Style$BsReactNative.shadowRadius(1.0),
+                                Style$BsReactNative.shadowOpacity(0.4),
                                 /* :: */[
-                                  Style$BsReactNative.shadowOffset(1.0, 0.0),
-                                  /* [] */0
+                                  Style$BsReactNative.shadowRadius(1.0),
+                                  /* :: */[
+                                    Style$BsReactNative.shadowOffset(1.0, 0.0),
+                                    /* [] */0
+                                  ]
                                 ]
                               ]
                             ]
@@ -55,24 +66,7 @@ var fab = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var arrow = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.marginLeft(/* Pt */Block.__(0, [12.0])),
-      /* :: */[
-        Style$BsReactNative.fontSize(/* Float */Block.__(0, [45.0])),
-        /* :: */[
-          Style$BsReactNative.color(/* String */Block.__(0, ["black"])),
-          /* :: */[
-            Style$BsReactNative.Transform[/* make */0](undefined, undefined, undefined, undefined, undefined, 1.25, undefined, undefined, undefined, undefined, undefined, /* () */0),
-            /* [] */0
-          ]
-        ]
-      ]
-    ]);
-
-var Style = /* module */[
-  /* fab */fab,
-  /* arrow */arrow
-];
+var Style = /* module */[/* fab */fab];
 
 var component = ReasonReact.statelessComponent("BackToTopButton");
 
@@ -88,7 +82,7 @@ function make(onPress, _children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return ReasonReact.element(undefined, undefined, TouchableOpacity$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(fab), undefined, onPress, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(arrow), undefined, undefined, undefined, undefined, undefined, undefined, "^", /* array */[]))]));
+              return ReasonReact.element(undefined, undefined, TouchableOpacity$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(fab), undefined, onPress, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, refreshImageSource, Js_primitive.some(AppStyle.image), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
@@ -97,7 +91,8 @@ function make(onPress, _children) {
         ];
 }
 
+exports.refreshImageSource = refreshImageSource;
 exports.Style = Style;
 exports.component = component;
 exports.make = make;
-/* fab Not a pure module */
+/* refreshImageSource Not a pure module */
