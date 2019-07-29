@@ -62,7 +62,7 @@ let make =
               ++ string_of_int(news.item.id);
             let content = `text(news.item.title ++ ": " ++ url ++ "\n");
             Js.Promise.(
-              share(~content, ~title="Share Links", ())
+              share(~content, ~dialogTitle="Share HN Link", ())
               |> then_(ret => resolve(ret))
               |> ignore
             );
@@ -80,13 +80,7 @@ let make =
               );
             let content = `text(news.item.title ++ ": " ++ url ++ "\n");
             Js.Promise.(
-              share(
-                ~content,
-                ~title="Share Links",
-                ~subject="Share it",
-                ~dialogTitle="Share!",
-                (),
-              )
+              share(~content, ~dialogTitle="Share Article Link", ())
               |> then_(ret => resolve(ret))
               |> ignore
             );

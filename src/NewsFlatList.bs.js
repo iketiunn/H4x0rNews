@@ -87,7 +87,7 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                   -856044371,
                                   content_001
                                 ];
-                                Share$BsReactNative.share(content, "Share Links", undefined, undefined, undefined, undefined, /* () */0).then((function (ret) {
+                                Share$BsReactNative.share(content, undefined, undefined, undefined, undefined, "Share HN Link", /* () */0).then((function (ret) {
                                         return Promise.resolve(ret);
                                       }));
                                 return /* () */0;
@@ -100,7 +100,7 @@ function make(data, refreshing, onRefresh, onEndReached, navigation, _children) 
                                   -856044371,
                                   content_001
                                 ];
-                                Share$BsReactNative.share(content, "Share Links", "Share it", undefined, undefined, "Share!", /* () */0).then((function (ret) {
+                                Share$BsReactNative.share(content, undefined, undefined, undefined, undefined, "Share Article Link", /* () */0).then((function (ret) {
                                         return Promise.resolve(ret);
                                       }));
                                 return /* () */0;
