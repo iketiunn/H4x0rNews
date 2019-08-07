@@ -204,8 +204,11 @@ function item(level) {
   var match$1 = level % 7;
   var borderColor;
   switch (match$1) {
+    case -1 : 
+        borderColor = "#F6F6EF";
+        break;
     case 0 : 
-        borderColor = "#41cfea";
+        borderColor = "#e74c3c";
         break;
     case 1 : 
         borderColor = "#34ace0";

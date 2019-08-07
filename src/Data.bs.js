@@ -8,12 +8,12 @@ function transStoryToComment(s) {
   var content = match !== undefined ? match : "";
   return /* record */[
           /* id */s[/* id */0],
-          /* level */0,
+          /* level */-1,
           /* user */s[/* user */3],
           /* time */s[/* time */4],
           /* time_ago */s[/* time_ago */5],
           /* content */content,
-          /* comments */s[/* comments */10]
+          /* comments : [] */0
         ];
 }
 

@@ -44,7 +44,7 @@ function make(storyId, _children) {
                 var match$1 = story[/* content */9];
                 var comments = match$1 !== undefined ? /* :: */[
                     Data.transStoryToComment(story),
-                    /* [] */0
+                    story[/* comments */10]
                   ] : story[/* comments */10];
                 tmp = ReasonReact.element(undefined, undefined, CommentsFlatList.make(comments, /* array */[]));
               } else {

@@ -66,7 +66,8 @@ module Comment = {
     let marginTopVal = level == 0 ? 1.0 : 2.5;
     let borderColor =
       switch (level mod 7) {
-      | 0 => "#41cfea"
+      | (-1) => "#F6F6EF"
+      | 0 => "#e74c3c"
       | 1 => "#34ace0"
       | 2 => "#33d9b2"
       | 3 => "#ffda79"

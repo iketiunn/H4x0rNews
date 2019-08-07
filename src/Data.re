@@ -41,12 +41,12 @@ let transStoryToComment = s => {
     };
   {
     id: s.id,
-    level: 0,
+    level: (-1),
     user: s.user,
     time: s.time,
     time_ago: s.time_ago,
     content,
-    comments: s.comments,
+    comments: [],
   };
 };
 

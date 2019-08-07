@@ -37,7 +37,10 @@ let make = (~storyId: int, _children) => {
             | Some(story) =>
               let comments =
                 switch (story.content) {
-                | Some(_content) => [Data.transStoryToComment(story)]
+                | Some(_content) => [
+                    Data.transStoryToComment(story),
+                    ...story.comments,
+                  ]
                 | None => story.comments
                 };
               <CommentsFlatList data=comments />;
