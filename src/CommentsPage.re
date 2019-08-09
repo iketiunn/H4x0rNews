@@ -31,7 +31,7 @@ let make = (~storyId: int, _children) => {
       },
     render: self =>
       <SafeAreaView style=AppStyle.pageContainer>
-        <View style=AppStyle.news>
+        <View style=AppStyle.NewsPage.newsContainer>
           {
             switch (self.state.story) {
             | Some(story) =>

@@ -92,30 +92,49 @@ let make =
 
             let openUrl = () => Linking.openURL(news.item.url) |> ignore;
            */
-          <View style=AppStyle.listItemContainer>
-            <View style=AppStyle.listIndex>
-              <Text value=index style=AppStyle.listIndex />
-              <Text value=point style=AppStyle.listIndex />
+          <View style=AppStyle.NewsPage.listItemContainer>
+            <View style=AppStyle.NewsPage.listIndex>
+              <Text value=index style=AppStyle.NewsPage.listIndex />
+              <Text value=point style=AppStyle.NewsPage.listIndex />
             </View>
-            <View style=AppStyle.listContent>
-              <Text value=title style=AppStyle.title onPress=openUrl />
-              <Text value=domain style=AppStyle.domain />
+            <View style=AppStyle.NewsPage.listContent>
+              <Text
+                value=title
+                style=AppStyle.NewsPage.title
+                onPress=openUrl
+              />
+              <Text value=domain style=AppStyle.NewsPage.domain />
               /***  */
-              <View style=AppStyle.timeAgoAndUserAndLinkContainer>
-                <Text value=timeAgoAndUser style=AppStyle.timeAgoAndUser />
+              <View style=AppStyle.NewsPage.timeAgoAndUserAndLinkContainer>
+                <Text
+                  value=timeAgoAndUser
+                  style=AppStyle.NewsPage.timeAgoAndUser
+                />
                 <TouchableOpacity onPress=shareArticleLink>
-                  <Image style=AppStyle.linkImage source=linkImageSource />
+                  <Image
+                    style=AppStyle.NewsPage.linkImage
+                    source=linkImageSource
+                  />
                 </TouchableOpacity>
               </View>
             </View>
-            <View style=AppStyle.commentAndShareContainer>
+            <View style=AppStyle.NewsPage.commentAndShareContainer>
               <TouchableOpacity onPress=sharePostLink>
-                <Image style=AppStyle.shareImage source=shareImageSource />
+                <Image
+                  style=AppStyle.NewsPage.shareImage
+                  source=shareImageSource
+                />
               </TouchableOpacity>
               <TouchableOpacity onPress=navigateToComment>
-                <View style=AppStyle.commentContainer>
-                  <Image style=AppStyle.image source=commentImageSource />
-                  <Text style=AppStyle.commentCount value=commentsCount />
+                <View style=AppStyle.NewsPage.commentContainer>
+                  <Image
+                    style=AppStyle.Common.image
+                    source=commentImageSource
+                  />
+                  <Text
+                    style=AppStyle.NewsPage.commentCount
+                    value=commentsCount
+                  />
                 </View>
               </TouchableOpacity>
             </View>
@@ -124,7 +143,9 @@ let make =
       /* Need to specified type! */
       let keyExtractor = (_item: Data.news, index) => string_of_int(index);
       let itemSeparatorComponent =
-        FlatList.separatorComponent(_ => <View style=AppStyle.separator />);
+        FlatList.separatorComponent(_ =>
+          <View style=AppStyle.NewsPage.separator />
+        );
       /** Not support ~ref to do scrollToIndex */
       <FlatList
         data

@@ -57,7 +57,7 @@ let make = (~navigation: Config.navigationProp, _children) => {
       },
     render: self =>
       <SafeAreaView style=AppStyle.pageContainer>
-        <View style=AppStyle.news>
+        <View style=AppStyle.NewsPage.newsContainer>
           {
             /***
              * If timeout, shows timeout wording

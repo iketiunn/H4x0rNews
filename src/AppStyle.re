@@ -1,6 +1,29 @@
 open BsReactNative;
 open Style;
 
+module RefreshButton = {
+  let floatingActionButton =
+    style([
+      /*  Should get backgroundColor to cover the comments */
+      backgroundColor(String("#F7F5F8")),
+      borderStyle(Solid),
+      borderColor(String("black")),
+      width(Pt(40.0)),
+      height(Pt(40.0)),
+      borderRadius(100.0),
+      position(Absolute),
+      bottom(Pt(5.0)),
+      right(Pt(20.0)),
+      alignItems(Center),
+      justifyContent(Center),
+      /** For Android / iOS shadow */ elevation(2.0),
+      shadowColor(String("#000000")),
+      shadowOpacity(0.4),
+      shadowRadius(1.0),
+      shadowOffset(~height=1.0, ~width=0.0),
+    ]);
+};
+
 let hackerNewsHeaderBackgroundColor = backgroundColor(String("#FF6600"));
 let hackerNewsContentBackgroundColor = backgroundColor(String("#F6F6EF"));
 let grayColor = color(String("#727270"));
@@ -19,47 +42,52 @@ module Common = {
 
   let header = style([hackerNewsHeaderBackgroundColor]);
   let navigationTint = String("black");
+  let imageHW = Pt(17.5);
+  let imageSize = [width(imageHW), height(imageHW)];
+  let image = style(imageSize);
 };
 
-/** News page */
-let news = style([flex(1.0), hackerNewsContentBackgroundColor]);
-let separator =
-  style([
-    height(Pt(1.0)),
-    backgroundColor(String("#ededed")),
-    marginTop(Pt(5.0)),
-    marginBottom(Pt(5.0)),
-  ]);
+module NewsPage = {
+  open Common;
+  let newsContainer = style([flex(1.0), hackerNewsContentBackgroundColor]);
+  let separator =
+    style([
+      height(Pt(1.0)),
+      backgroundColor(String("#ededed")),
+      marginTop(Pt(5.0)),
+      marginBottom(Pt(5.0)),
+    ]);
 
-let listItemContainer =
-  style([display(Flex), flexWrap(Nowrap), flexDirection(Row)]);
-let listIndex = style([flex(0.125), alignSelf(Center)]);
-let listContent =
-  style([flex(0.740), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
-let title = style([paddingTop(Pt(5.0)), fontWeight(`Bold)]);
-let domain = style([fontStyle(Italic), grayColor]);
+  let listItemContainer =
+    style([display(Flex), flexWrap(Nowrap), flexDirection(Row)]);
+  let listIndex = style([flex(0.125), alignSelf(Center)]);
+  let listContent =
+    style([flex(0.740), paddingLeft(Pt(5.0)), paddingRight(Pt(5.0))]);
+  let title = style([paddingTop(Pt(5.0)), fontWeight(`Bold)]);
+  let domain = style([fontStyle(Italic), grayColor]);
 
-let timeAgoAndUserAndLinkContainer =
-  style([display(Flex), flexDirection(Row), justifyContent(SpaceBetween)]);
+  let timeAgoAndUserAndLinkContainer =
+    style([
+      display(Flex),
+      flexDirection(Row),
+      justifyContent(SpaceBetween),
+    ]);
 
-let timeAgoAndUser = style([grayColor]);
-let commentAndShareContainer =
-  style([
-    flex(0.135),
-    display(Flex),
-    flexDirection(Column),
-    justifyContent(SpaceBetween),
-  ]);
-let commentContainer =
-  style([display(Flex), flexDirection(Row), alignItems(Center)]);
-let imageHW = Pt(17.5);
-let imageSize = [width(imageHW), height(imageHW)];
-let image = style(imageSize);
-let linkImage = style([marginRight(Pt(5.0)), ...imageSize]);
-let shareImage = style([marginTop(Pt(12.0)), ...imageSize]);
-let commentCount = style([paddingLeft(Pt(3.0))]);
+  let timeAgoAndUser = style([grayColor]);
+  let commentAndShareContainer =
+    style([
+      flex(0.135),
+      display(Flex),
+      flexDirection(Column),
+      justifyContent(SpaceBetween),
+    ]);
+  let commentContainer =
+    style([display(Flex), flexDirection(Row), alignItems(Center)]);
+  let linkImage = style([marginRight(Pt(5.0)), ...imageSize]);
+  let shareImage = style([marginTop(Pt(12.0)), ...imageSize]);
+  let commentCount = style([paddingLeft(Pt(3.0))]);
+};
 
-/** Comments page */;
 module Comment = {
   let container = style([display(Flex), hackerNewsContentBackgroundColor]);
   let item = (level: int) => {

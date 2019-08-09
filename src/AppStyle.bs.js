@@ -4,6 +4,58 @@
 var Block = require("bs-platform/lib/js/block.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
 
+var floatingActionButton = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F7F5F8"])),
+      /* :: */[
+        Style$BsReactNative.borderStyle(/* Solid */0),
+        /* :: */[
+          Style$BsReactNative.borderColor(/* String */Block.__(0, ["black"])),
+          /* :: */[
+            Style$BsReactNative.width(/* Pt */Block.__(0, [40.0])),
+            /* :: */[
+              Style$BsReactNative.height(/* Pt */Block.__(0, [40.0])),
+              /* :: */[
+                Style$BsReactNative.borderRadius(100.0),
+                /* :: */[
+                  Style$BsReactNative.position(/* Absolute */0),
+                  /* :: */[
+                    Style$BsReactNative.bottom(/* Pt */Block.__(0, [5.0])),
+                    /* :: */[
+                      Style$BsReactNative.right(/* Pt */Block.__(0, [20.0])),
+                      /* :: */[
+                        Style$BsReactNative.alignItems(/* Center */2),
+                        /* :: */[
+                          Style$BsReactNative.justifyContent(/* Center */2),
+                          /* :: */[
+                            Style$BsReactNative.elevation(2.0),
+                            /* :: */[
+                              Style$BsReactNative.shadowColor(/* String */Block.__(0, ["#000000"])),
+                              /* :: */[
+                                Style$BsReactNative.shadowOpacity(0.4),
+                                /* :: */[
+                                  Style$BsReactNative.shadowRadius(1.0),
+                                  /* :: */[
+                                    Style$BsReactNative.shadowOffset(1.0, 0.0),
+                                    /* [] */0
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]);
+
+var RefreshButton = /* module */[/* floatingActionButton */floatingActionButton];
+
 var hackerNewsHeaderBackgroundColor = Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#FF6600"]));
 
 var hackerNewsContentBackgroundColor = Style$BsReactNative.backgroundColor(/* String */Block.__(0, ["#F6F6EF"]));
@@ -41,16 +93,35 @@ var header = Style$BsReactNative.style(/* :: */[
       /* [] */0
     ]);
 
+var imageHW = /* Pt */Block.__(0, [17.5]);
+
+var imageSize_000 = Style$BsReactNative.width(imageHW);
+
+var imageSize_001 = /* :: */[
+  Style$BsReactNative.height(imageHW),
+  /* [] */0
+];
+
+var imageSize = /* :: */[
+  imageSize_000,
+  imageSize_001
+];
+
+var image = Style$BsReactNative.style(imageSize);
+
 var Common_003 = /* navigationTint : String */["black"];
 
 var Common = /* module */[
   /* grayFontColor */grayFontColor,
   /* textCenter */textCenter,
   /* header */header,
-  Common_003
+  Common_003,
+  /* imageHW */imageHW,
+  /* imageSize */imageSize,
+  /* image */image
 ];
 
-var news = Style$BsReactNative.style(/* :: */[
+var newsContainer = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.flex(1.0),
       /* :: */[
         hackerNewsContentBackgroundColor,
@@ -159,22 +230,6 @@ var commentContainer = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
-var imageHW = /* Pt */Block.__(0, [17.5]);
-
-var imageSize_000 = Style$BsReactNative.width(imageHW);
-
-var imageSize_001 = /* :: */[
-  Style$BsReactNative.height(imageHW),
-  /* [] */0
-];
-
-var imageSize = /* :: */[
-  imageSize_000,
-  imageSize_001
-];
-
-var image = Style$BsReactNative.style(imageSize);
-
 var linkImage = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.marginRight(/* Pt */Block.__(0, [5.0])),
       imageSize
@@ -189,6 +244,23 @@ var commentCount = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.paddingLeft(/* Pt */Block.__(0, [3.0])),
       /* [] */0
     ]);
+
+var NewsPage = /* module */[
+  /* newsContainer */newsContainer,
+  /* separator */separator,
+  /* listItemContainer */listItemContainer,
+  /* listIndex */listIndex,
+  /* listContent */listContent,
+  /* title */title,
+  /* domain */domain,
+  /* timeAgoAndUserAndLinkContainer */timeAgoAndUserAndLinkContainer,
+  /* timeAgoAndUser */timeAgoAndUser,
+  /* commentAndShareContainer */commentAndShareContainer,
+  /* commentContainer */commentContainer,
+  /* linkImage */linkImage,
+  /* shareImage */shareImage,
+  /* commentCount */commentCount
+];
 
 var container = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.display(/* Flex */0),
@@ -276,29 +348,14 @@ var paddingLeft = Style$BsReactNative.style(/* :: */[
 
 var CommentsPage = /* module */[/* paddingLeft */paddingLeft];
 
+exports.RefreshButton = RefreshButton;
 exports.hackerNewsHeaderBackgroundColor = hackerNewsHeaderBackgroundColor;
 exports.hackerNewsContentBackgroundColor = hackerNewsContentBackgroundColor;
 exports.grayColor = grayColor;
 exports.activityIndicator = activityIndicator;
 exports.pageContainer = pageContainer;
 exports.Common = Common;
-exports.news = news;
-exports.separator = separator;
-exports.listItemContainer = listItemContainer;
-exports.listIndex = listIndex;
-exports.listContent = listContent;
-exports.title = title;
-exports.domain = domain;
-exports.timeAgoAndUserAndLinkContainer = timeAgoAndUserAndLinkContainer;
-exports.timeAgoAndUser = timeAgoAndUser;
-exports.commentAndShareContainer = commentAndShareContainer;
-exports.commentContainer = commentContainer;
-exports.imageHW = imageHW;
-exports.imageSize = imageSize;
-exports.image = image;
-exports.linkImage = linkImage;
-exports.shareImage = shareImage;
-exports.commentCount = commentCount;
+exports.NewsPage = NewsPage;
 exports.Comment = Comment;
 exports.CommentsPage = CommentsPage;
-/* hackerNewsHeaderBackgroundColor Not a pure module */
+/* floatingActionButton Not a pure module */
