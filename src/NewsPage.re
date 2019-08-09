@@ -1,10 +1,5 @@
 open BsReactNative;
-
-let failAfter = t =>
-  Js.Promise.make((~resolve, ~reject) =>
-    Js.Global.setTimeout(() => reject(. Not_found), t) |> ignore
-  );
-let withTimeout = (prom, t) => Js.Promise.race([|prom, failAfter(t)|]);
+open Util;
 
 type state = {
   newsList: list(Data.news),

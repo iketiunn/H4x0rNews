@@ -3,6 +3,7 @@
 
 var Data = require("./Data.bs.js");
 var List = require("bs-platform/lib/js/list.js");
+var Util = require("./Util.bs.js");
 var $$Array = require("bs-platform/lib/js/array.js");
 var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
@@ -13,24 +14,7 @@ var NewsFlatList = require("./NewsFlatList.bs.js");
 var BackToTopButton = require("./BackToTopButton.bs.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
-var Caml_builtin_exceptions = require("bs-platform/lib/js/caml_builtin_exceptions.js");
 var SafeAreaView$BsReactNative = require("bs-react-native/src/components/safeAreaView.js");
-
-function failAfter(t) {
-  return new Promise((function (resolve, reject) {
-                setTimeout((function (param) {
-                        return reject(Caml_builtin_exceptions.not_found);
-                      }), t);
-                return /* () */0;
-              }));
-}
-
-function withTimeout(prom, t) {
-  return Promise.race(/* array */[
-              prom,
-              failAfter(t)
-            ]);
-}
 
 var component = ReasonReact.reducerComponent("App");
 
@@ -40,7 +24,7 @@ function make(navigation, _children) {
     if (state[/* page */1] < 10 && !state[/* isLoading */2]) {
       var send = param[/* send */3];
       var newPage = state[/* page */1] + 1 | 0;
-      withTimeout(Data.fetchNewList(String(newPage), /* () */0), 30000).then((function (newsList) {
+      Util.withTimeout(Data.fetchNewList(String(newPage), /* () */0), 30000).then((function (newsList) {
                 return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
                                   newPage,
                                   newsList
@@ -56,7 +40,7 @@ function make(navigation, _children) {
   var reload = function (param) {
     var send = param[/* send */3];
     Curry._1(send, /* Init */0);
-    withTimeout(Data.fetchNewList(String(1), /* () */0), 30000).then((function (newsList) {
+    Util.withTimeout(Data.fetchNewList(String(1), /* () */0), 30000).then((function (newsList) {
               return Promise.resolve(Curry._1(send, /* Loaded */[/* tuple */[
                                 1,
                                 newsList
@@ -167,8 +151,6 @@ function make(navigation, _children) {
         ];
 }
 
-exports.failAfter = failAfter;
-exports.withTimeout = withTimeout;
 exports.component = component;
 exports.make = make;
 /* component Not a pure module */
