@@ -57,18 +57,18 @@ let make = (~navigation: Config.navigationProp, _children) => {
       },
     render: self =>
       <SafeAreaView style=AppStyle.pageContainer>
-        {
-          if (self.state.timeout) {
-            <View style=AppStyle.news>
+        <View style=AppStyle.news>
+          {
+            /***
+             * If timeout, shows timeout wording
+             * or shows news list
+             */
+            self.state.timeout ?
               <Text
                 style=AppStyle.Common.textCenter
-                value="Timeout...Tap Back-To-Top Button to reload"
+                value="Timeout...Tap Refresh Button to reload page"
                 onPress={_ => reload(self)}
-              />
-              <BackToTopButton onPress={_ => reload(self)} />
-            </View>;
-          } else {
-            <View style=AppStyle.news>
+              /> :
               <NewsFlatList
                 data={Array.of_list(self.state.newsList)}
                 refreshing={self.state.isLoading}
@@ -76,11 +76,9 @@ let make = (~navigation: Config.navigationProp, _children) => {
                 onEndReached={_ => loadNews(self)}
                 navigation
               />
-              /*** Since back to top is not available due to ref api is not implement */
-              <BackToTopButton onPress={_ => reload(self)} />
-            </View>;
           }
-        }
+          <RefreshButton onPress={_ => reload(self)} />
+        </View>
       </SafeAreaView>,
   };
 };
