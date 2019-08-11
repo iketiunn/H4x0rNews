@@ -1,34 +1,35 @@
-open BsReactNative;
+open ReactNative;
 
 let component = ReasonReact.statelessComponent("CommentsFlatList");
-let make = (~data: list(Data.comment), _children) => {
+[@react.component]
+let make = (~data: list(Data.comment), ()) => {
   let rec renderComment = (~comments: list(Data.comment), ~first) => {
     let renderItem =
-      FlatList.renderItem((comment: FlatList.renderBag(Data.comment)) => {
-        let user =
-          switch (comment.item.user) {
-          | Some(u) => u
-          | None => "[deleted]"
-          };
-        let userAndTimeAge = user ++ " " ++ comment.item.time_ago;
-        /*
-         * NTH: Fold comment
-         * Done: Better bottom
-         */
-        <View style=AppStyle.Comment.container>
-          <View style={AppStyle.Comment.item(comment.item.level)}>
-            <Text style=AppStyle.Common.grayFontColor value=userAndTimeAge />
-            <HtmlView content={comment.item.content} />
-          </View>
-          {
-            List.length(comment.item.comments) > 0 ?
-              renderComment(~comments=comment.item.comments, ~first=false) :
-              <View />
-          }
-        </View>;
-      });
+        (comment: ReactNative.VirtualizedList.renderItemProps(Data.comment)) => {
+      let item = comment##item;
+      let user =
+        switch (item.user) {
+        | Some(u) => u
+        | None => "[deleted]"
+        };
+      let userAndTimeAge = user ++ " " ++ item.time_ago;
+      /*
+       * NTH: Fold comment
+       * Done: Better bottom
+       */
+      <View style=AppStyle.Comment.container>
+        <View style={AppStyle.Comment.item(item.level)}>
+          <Text style=AppStyle.Common.grayFontColor value=userAndTimeAge />
+          <HtmlView content={item.content} />
+        </View>
+        {
+          List.length(item.comments) > 0 ?
+            renderComment(~comments=item.comments, ~first=false) : <View />
+        }
+      </View>;
+    };
     let keyExtractor = (_item: Data.comment, index) => string_of_int(index);
-    let listFooterComponent =
+    let listFooterComponent = () =>
       first ?
         <Text style=AppStyle.Common.textCenter value="End of the thread" /> :
         <View />;
@@ -37,10 +38,10 @@ let make = (~data: list(Data.comment), _children) => {
       keyExtractor
       renderItem
       style=AppStyle.CommentsPage.paddingLeft
-      listFooterComponent
+      _ListFooterComponent=listFooterComponent
     />;
   };
-  {
+  ReactCompat.useRecordApi({
     ...component,
     render: _self =>
       if (List.length(data) > 0) {
@@ -50,5 +51,5 @@ let make = (~data: list(Data.comment), _children) => {
           <Text style=AppStyle.Common.textCenter value="No comments" />
         </View>;
       },
-  };
+  });
 };
