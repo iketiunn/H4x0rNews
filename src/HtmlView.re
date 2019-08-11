@@ -1,4 +1,4 @@
-open BsReactNative;
+open ReactNative;
 
 /**
  * Done: text select / sharing
@@ -6,10 +6,8 @@ open BsReactNative;
  */
 let onLinkPress = (_evt, href) =>
   /* Linking.openURL(href) |> ignore; */
-  ReasonExpo.WebBrowser.openBrowserAsync(href) |> ignore;
+  Expo.WebBrowser.openBrowserAsync(href) |> ignore;
 let component = ReasonReact.statelessComponent("HtmlView");
-let make = (~content: string, _children) => {
-  ...component,
-  render: _self =>
-    <View> <HTML html=content onLinkPress textSelectable=true /> </View>,
-};
+[@react.component]
+let make = (~content: string, ()) =>
+  <View> <HTML html=content onLinkPress textSelectable=true /> </View>;

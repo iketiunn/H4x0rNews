@@ -1,4 +1,5 @@
-open BsReactNative;
+open ReactNative;
+open ReactNavigation;
 open Util;
 
 type state = {
@@ -13,7 +14,8 @@ type action =
   | Loading
   | Timeout;
 let component = ReasonReact.reducerComponent("App");
-let make = (~navigation: Config.navigationProp, _children) => {
+[@react.component]
+let make = (~navigation: Navigation.t, ()) => {
   let loadNews = ({ReasonReact.state, send}) =>
     if (state.page < 10 && !state.isLoading) {
       let newPage = state.page + 1;
@@ -38,7 +40,7 @@ let make = (~navigation: Config.navigationProp, _children) => {
     );
   };
   let init = () => {newsList: [], page: 0, isLoading: false, timeout: false};
-  {
+  ReactCompat.useRecordApi({
     ...component,
     initialState: init,
     didMount: loadNews,
@@ -80,5 +82,5 @@ let make = (~navigation: Config.navigationProp, _children) => {
           <RefreshButton onPress={_ => reload(self)} />
         </View>
       </SafeAreaView>,
-  };
+  });
 };

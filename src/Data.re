@@ -51,7 +51,7 @@ let transStoryToComment = s => {
 };
 
 module Decode = {
-  let news = json: news =>
+  let news = (json): news =>
     Json.Decode.{
       id: json |> field("id", int),
       title: json |> field("title", string),
@@ -64,9 +64,9 @@ module Decode = {
       url: json |> field("url", string),
       domain: json |> optional(field("domain", string)),
     };
-  let newsList = json: list(news) => Json.Decode.(json |> list(news));
+  let newsList = (json): list(news) => Json.Decode.(json |> list(news));
 
-  let rec comment = json: comment =>
+  let rec comment = (json): comment =>
     Json.Decode.{
       id: json |> field("id", int),
       level: json |> field("level", int),
@@ -77,7 +77,7 @@ module Decode = {
       comments: json |> field("comments", list(comment)),
     };
 
-  let story = json: story =>
+  let story = (json): story =>
     Json.Decode.{
       id: json |> field("id", int),
       title: json |> field("title", string),

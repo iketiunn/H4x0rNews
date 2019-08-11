@@ -5,28 +5,34 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "BROWSER=none expo start --android",
+    "ios": "BROWSER=none expo start --ios",
     "eject": "expo eject",
     "build": "bsb -make-world -clean-world",
     "watch": "bsb -make-world -clean-world -w",
     "postinstall": "yarn build"
   },
   "dependencies": {
-    "@glennsl/bs-json": "^3.0.0",
-    "bs-fetch": "^0.3.1",
-    "bs-platform": "^4.0.7",
-    "bs-react-native": "^0.10.0",
-    "bs-react-navigation": "git+https://git@github.com/ikewat/bs-react-navigation.git",
-    "expo": "^32.0.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "@glennsl/bs-json": "^5.0.0",
+    "bs-fetch": "^0.5.0",
+    "bs-platform": "^5.0.1",
+    "bs-react-native-jsx3-compat": "^0.11.1",
+    "expo": "^34.0.3",
+    "react": "16.8.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.3.0",
+    "react-native-reanimated": "~1.1.0",
     "react-native-render-html": "^4.1.2",
-    "reason-expo": "^32.0.1",
-    "reason-react": "^0.5.3"
+    "react-navigation": "^3.11.0",
+    "react-navigation-hooks": "^1.0.0-alpha.2",
+    "reason-expo": "^34.0.0",
+    "reason-react": "^0.7.0",
+    "reason-react-compat": "^0.4.0",
+    "reason-react-native": "^0.60.0",
+    "reason-react-navigation": "^3.11.0-alpha.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
-    "expo-cli": "^2.20.8"
+    "babel-preset-expo": "^6.0.0",
+    "symlink-dir": "^3.1.0"
   }
 }

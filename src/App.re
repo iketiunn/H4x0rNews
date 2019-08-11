@@ -1,2 +1,1 @@
-let stack = Navigation.render;
-let app = stack;
+let app = StackNavigation.make;

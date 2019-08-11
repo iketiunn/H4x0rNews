@@ -1,4 +1,5 @@
-open BsReactNative;
+open ReactNative;
+open ReactNavigation;
 
 type state = {
   story: option(Data.story),
@@ -8,7 +9,15 @@ type action =
   | Loaded(Data.story)
   | Loading;
 let component = ReasonReact.reducerComponent("Comments");
-let make = (~storyId: int, _children) => {
+[@react.component]
+let make = (~navigation) => {
+  /** You will a optional param, not so Reasonable... */
+  /** Not handle 0 */
+  let storyId =
+    navigation
+    ->Navigation.getParam("storyId")
+    ->Js.Nullable.toOption
+    ->Belt.Option.mapWithDefault(0, id => id);
   let loadComments = ({ReasonReact.state, send}) =>
     if (!state.isLoading) {
       Js.Promise.(
@@ -19,7 +28,7 @@ let make = (~storyId: int, _children) => {
 
       send(Loading);
     };
-  {
+  ReactCompat.useRecordApi({
     ...component,
     initialState: () => {story: None, isLoading: false},
     didMount: loadComments,
@@ -50,7 +59,7 @@ let make = (~storyId: int, _children) => {
                   if (self.state.isLoading) {
                     <ActivityIndicator
                       style=AppStyle.activityIndicator
-                      size=`large
+                      size=ActivityIndicator.Size.large
                     />;
                   } else {
                     <View />;
@@ -61,5 +70,5 @@ let make = (~storyId: int, _children) => {
           }
         </View>
       </SafeAreaView>,
-  };
+  });
 };

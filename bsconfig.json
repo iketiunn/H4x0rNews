@@ -1,22 +1,22 @@
 {
   "name": "H4x0rNews",
   "reason": {
-    "react-jsx": 2
+    "react-jsx": 3
   },
-  "bsc-flags": [
-    "-bs-super-errors"
-  ],
+  "bsc-flags": ["-bs-super-errors"],
   "bs-dependencies": [
-    "bs-react-native",
+    "reason-react-compat",
     "reason-react",
+    "reason-react-native",
+    "reason-react-navigation",
     "reason-expo",
     "@glennsl/bs-json",
-    "bs-fetch",
-    "bs-react-navigation"
+    "bs-fetch"
   ],
   "sources": [
     {
-      "dir": "src"
+      "dir": "src",
+      "subdirs": true
     }
   ],
   "suffix": ".bs.js",
