@@ -19,7 +19,9 @@ let make = (~data: list(Data.comment), ()) => {
        */
       <View style=AppStyle.Comment.container>
         <View style={AppStyle.Comment.item(item.level)}>
-          <Text style=AppStyle.Common.grayFontColor value=userAndTimeAge />
+          <Text style=AppStyle.Common.grayFontColor>
+            userAndTimeAge->React.string
+          </Text>
           <HtmlView content={item.content} />
         </View>
         {
@@ -31,7 +33,9 @@ let make = (~data: list(Data.comment), ()) => {
     let keyExtractor = (_item: Data.comment, index) => string_of_int(index);
     let listFooterComponent = () =>
       first ?
-        <Text style=AppStyle.Common.textCenter value="End of the thread" /> :
+        <Text style=AppStyle.Common.textCenter>
+          "End of the thread"->React.string
+        </Text> :
         <View />;
     <FlatList
       data={Array.of_list(comments)}
@@ -48,7 +52,9 @@ let make = (~data: list(Data.comment), ()) => {
         renderComment(~comments=data, ~first=true);
       } else {
         <View>
-          <Text style=AppStyle.Common.textCenter value="No comments" />
+          <Text style=AppStyle.Common.textCenter>
+            "No comments"->React.string
+          </Text>
         </View>;
       },
   });

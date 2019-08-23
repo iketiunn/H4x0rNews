@@ -127,9 +127,7 @@ let make =
             <Text style=AppStyle.NewsPage.title onPress=openUrl>
               title->React.string
             </Text>
-            <Text value=domain style=AppStyle.NewsPage.domain>
-              domain->React.string
-            </Text>
+            <Text style=AppStyle.NewsPage.domain> domain->React.string </Text>
             <View style=AppStyle.NewsPage.timeAgoAndUserAndLinkContainer>
               <Text style=AppStyle.NewsPage.timeAgoAndUser>
                 timeAgoAndUser->React.string

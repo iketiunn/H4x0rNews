@@ -121,7 +121,11 @@ module Comment = {
   /* let container = style([display(Flex), hackerNewsContentBackgroundColor]); */
   let container =
     Style.(
-      array([|style(~display=`flex, ()), hackerNewsContentBackgroundColor|])
+      array([|
+        /* style(~display=`flex, ~marginBottom=1.5->dp, ()), */
+        style(~display=`flex, ~marginTop=1.5->dp, ~marginBottom=1.0->dp, ()),
+        hackerNewsContentBackgroundColor,
+      |])
     );
   let item = (level: int) => {
     let marginTopVal = level == 0 ? 1.0 : 2.5;

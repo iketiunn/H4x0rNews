@@ -67,10 +67,9 @@ let make = (~navigation: Navigation.t, ()) => {
              */
             self.state.timeout ?
               <Text
-                style=AppStyle.Common.textCenter
-                value="Timeout...Tap Refresh Button to reload page"
-                onPress={_ => reload(self)}
-              /> :
+                style=AppStyle.Common.textCenter onPress={_ => reload(self)}>
+                "Timeout...Tap Refresh Button to reload page"->React.string
+              </Text> :
               <NewsFlatList
                 data={Array.of_list(self.state.newsList)}
                 refreshing={self.state.isLoading}
