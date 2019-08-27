@@ -9,7 +9,6 @@
     "reason-react",
     "reason-react-native",
     "reason-react-navigation",
-    "reason-expo",
     "@glennsl/bs-json",
     "bs-fetch"
   ],
