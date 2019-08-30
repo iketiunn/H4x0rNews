@@ -10,7 +10,8 @@ module AppContainer =
           screen: NewsPage.make,
           navigationOptions: () => {
             title: "Top News",
-            headerStyle: AppStyle.hackerNewsHeaderBackgroundColor,
+            headerStyle: AppStyle.navigationHeader,
+            headerTitleStyle: AppStyle.navigationHeaderTitle,
           },
         },
         "Comments": {
@@ -23,7 +24,11 @@ module AppContainer =
               ->Js.Nullable.toOption
               ->Belt.Option.mapWithDefault("Comments", t => t);
 
-            {title, headerStyle: AppStyle.hackerNewsHeaderBackgroundColor};
+            {
+              title,
+              headerStyle: AppStyle.navigationHeader,
+              headerTitleStyle: AppStyle.navigationHeaderTitle,
+            };
           },
         },
       });

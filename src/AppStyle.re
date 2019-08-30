@@ -18,7 +18,8 @@ module RefreshButton = {
         ~shadowColor="#000000",
         ~shadowOpacity=0.4,
         ~shadowRadius=1.0,
-        ~shadowOffset=offset(~height=1.0, ~width=0.0),
+        ~shadowOffset=offset(~height=1.0, ~width=1.0),
+        ~elevation=2.0,
         (),
       )
     );
@@ -30,7 +31,15 @@ let hackerNewsContentBackgroundColor =
   Style.(style(~backgroundColor="#F6F6EF", ()));
 let grayColor = Style.(style(~color="#727270", ()));
 
-/* let activityIndicator = style([hackerNewsContentBackgroundColor]); */
+let navigationHeader =
+  Style.(
+    array([|
+      hackerNewsHeaderBackgroundColor,
+      style(~height=33.0->Style.dp, ()),
+    |])
+  );
+let navigationHeaderTitle = Style.(style(~fontWeight=`bold, ()));
+
 let activityIndicator = hackerNewsContentBackgroundColor;
 /*
  * Using it to handle notch
@@ -128,7 +137,7 @@ module Comment = {
       |])
     );
   let item = (level: int) => {
-    let marginTopVal = level == 0 ? 1.0 : 2.5;
+    let marginTopVal = 2.5;
     let borderColor =
       switch (level mod 7) {
       | (-1) => "#F6F6EF"
@@ -147,7 +156,7 @@ module Comment = {
           ~borderLeftColor=borderColor,
           ~borderLeftWidth=3.0,
           ~paddingLeft=5.0->dp,
-          ~marginTop=marginTopVal->dp,
+          ~marginBottom=marginTopVal->dp,
           ~elevation=2.0,
           ~shadowColor="#000000",
           ~shadowOpacity=0.4,
