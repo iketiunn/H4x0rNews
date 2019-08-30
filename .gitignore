@@ -1,3 +1,7 @@
+# Editor
+.vscode
+
+# nodejs
 node_modules
 
 # Reason
