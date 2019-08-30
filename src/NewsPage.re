@@ -59,6 +59,7 @@ let make = (~navigation: Navigation.t, ()) => {
       },
     render: self =>
       <SafeAreaView style=AppStyle.pageContainer>
+        <StatusBar backgroundColor="#FF6600" />
         <View style=AppStyle.NewsPage.newsContainer>
           {
             /***
