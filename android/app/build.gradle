@@ -119,6 +119,12 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+configurations.all {
+  resolutionStrategy {
+    force "com.facebook.soloader:soloader:0.8.0"
+  }
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -131,7 +137,7 @@ android {
         applicationId "com.ikewat.h4x0rnews"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
+        versionCode 7
         versionName "0.2.1"
     }
     splits {
